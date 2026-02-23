@@ -1485,6 +1485,38 @@
             document.getElementById('music-visualizer').style.animationPlayState = 'paused';
         }
 
+        // Seek functionality
+        const progressBar = document.getElementById('music-progress-bar');
+        if (progressBar) {
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const percentage = Math.max(0, Math.min(1, clickX / width));
+
+                progress = Math.floor(percentage * tracks[currentTrack].time);
+                progFill.style.width = (percentage * 100) + '%';
+                currTimeEl.textContent = formatTime(progress);
+
+                // Recalculate roughly where we are in the sequence for note playback
+                if (audioCtx) {
+                    const seq = melodies[currentTrack % melodies.length];
+                    const totalSeqDuration = seq.reduce((acc, note) => acc + (note[1] * 0.13), 0);
+                    const timeInSeq = progress % totalSeqDuration;
+
+                    let timeAccum = 0;
+                    currentNote = 0;
+                    while (timeAccum < timeInSeq && currentNote < seq.length) {
+                        timeAccum += seq[currentNote][1] * 0.13;
+                        currentNote++;
+                    }
+                    if (isPlaying) {
+                        nextNoteTime = audioCtx.currentTime + 0.1;
+                    }
+                }
+            });
+        }
+
         // Initially pause visualizer
         const viz = document.getElementById('music-visualizer');
         if (viz) viz.style.animationPlayState = 'paused';
@@ -1514,6 +1546,17 @@
                 if (!isPlaying) startPlaying();
             });
         });
+
+        // Stop playing when the music window is closed
+        const musicWin = document.getElementById('window-music');
+        if (musicWin) {
+            const observer = new MutationObserver(() => {
+                if (!musicWin.dataset.state && isPlaying) {
+                    pausePlaying();
+                }
+            });
+            observer.observe(musicWin, { attributes: true, attributeFilter: ['data-state'] });
+        }
     })();
 
     /* ═══════════════════════════════════════════════
@@ -1522,7 +1565,6 @@
     (function initSettings() {
         const themeSelect = document.getElementById('setting-theme');
         const wallSelect = document.getElementById('setting-wallpaper');
-        const animToggle = document.getElementById('setting-animations');
         const fontSelect = document.getElementById('setting-fontsize');
         const colorDots = document.querySelectorAll('.color-dot');
 
@@ -1531,6 +1573,7 @@
         // Theme toggle
         themeSelect.addEventListener('change', (e) => {
             if (e.target.value === 'light') {
+                document.documentElement.dataset.theme = 'light';
                 document.documentElement.style.setProperty('--bg-dark', '#f8f9fa');
                 document.documentElement.style.setProperty('--bg-surface', '#ffffff');
                 document.documentElement.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.85)');
@@ -1544,6 +1587,7 @@
                 document.documentElement.style.setProperty('--grid-glow', 'rgba(124, 92, 252, 0.08)');
             } else {
                 // Reset to default dark
+                delete document.documentElement.dataset.theme;
                 document.documentElement.style.removeProperty('--bg-dark');
                 document.documentElement.style.removeProperty('--bg-surface');
                 document.documentElement.style.removeProperty('--glass-bg');
