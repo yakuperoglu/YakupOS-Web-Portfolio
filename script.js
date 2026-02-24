@@ -605,6 +605,7 @@
         stats: '📊 Stats',
         music: '🎵 Music.mp3',
         settings: '⚙️ Settings.sys',
+        gallery: '🖼️ Gallery',
         contact: '✉️ Contact.txt',
     };
 
@@ -712,18 +713,16 @@
     function handleMobileChange(e) {
         isMobile = e.matches;
         if (isMobile) {
-            // On mobile: show all windows as cards, reset positions
-            windows.forEach(win => {
-                win.dataset.state = 'open';
-                win.classList.add('open');
-                win.classList.remove('focused', 'maximized', 'minimizing');
-                win.style.display = 'flex';
-                win.style.animation = '';
-                win.style.zIndex = '';
-            });
             // Close start menu
             startMenu.hidden = true;
             startBtn.classList.remove('active');
+
+            // Remove maximized state from open windows so they flow naturally as cards
+            windows.forEach(win => {
+                if (win.classList.contains('maximized')) {
+                    win.classList.remove('maximized');
+                }
+            });
             updateTaskbar();
         }
     }
@@ -844,7 +843,7 @@
 
             case 'open': {
                 const target = args[0];
-                const validWindows = ['about', 'projects', 'certificates', 'contact', 'terminal', 'games', 'game-snake', 'game-tictactoe', 'game-memory', 'stats', 'music', 'settings'];
+                const validWindows = ['about', 'projects', 'certificates', 'contact', 'terminal', 'games', 'game-snake', 'game-tictactoe', 'game-memory', 'stats', 'music', 'settings', 'gallery'];
                 if (!target) {
                     termPrint('Usage: open &lt;window&gt;', 'term-error');
                     termPrint('Available: ' + validWindows.join(', '), 'term-system');
@@ -1381,7 +1380,17 @@
             // Pixel Sunset
             [[72, 4], [71, 4], [67, 4], [64, 4], [67, 8]],
             // Digital Rain
-            [[84, 1], [83, 1], [79, 1], [76, 1], [72, 1], [67, 1], [64, 1], [60, 1]]
+            [[84, 1], [83, 1], [79, 1], [76, 1], [72, 1], [67, 1], [64, 1], [60, 1]],
+            // Synthwave Drive
+            [[60, 2], [60, 2], [63, 2], [65, 2], [67, 4], [65, 2], [63, 2]],
+            // Arcade Boss
+            [[45, 1], [48, 1], [51, 1], [54, 1], [57, 1], [60, 1], [63, 1], [66, 4]],
+            // Cosmic Journey
+            [[72, 2], [79, 2], [76, 4], [74, 2], [72, 2], [71, 4]],
+            // Midnight City
+            [[55, 2], [62, 2], [67, 2], [74, 2], [79, 4], [74, 4]],
+            // 8-Bit Hero
+            [[60, 2], [64, 2], [67, 2], [72, 4], [72, 2], [76, 4]]
         ];
 
         const tracks = [
@@ -1389,7 +1398,12 @@
             { name: 'Neon Dreams', duration: '4:12', time: 252 },
             { name: 'Cyber Drift', duration: '2:58', time: 178 },
             { name: 'Pixel Sunset', duration: '3:45', time: 225 },
-            { name: 'Digital Rain', duration: '5:01', time: 301 }
+            { name: 'Digital Rain', duration: '5:01', time: 301 },
+            { name: 'Synthwave Drive', duration: '4:30', time: 270 },
+            { name: 'Arcade Boss', duration: '2:45', time: 165 },
+            { name: 'Cosmic Journey', duration: '5:15', time: 315 },
+            { name: 'Midnight City', duration: '3:55', time: 235 },
+            { name: '8-Bit Hero', duration: '2:30', time: 150 }
         ];
 
         function formatTime(secs) {
@@ -1539,11 +1553,21 @@
         nextBtn.addEventListener('click', nextTrack);
         prevBtn.addEventListener('click', prevTrack);
 
-        playlistItems.forEach(item => {
+        const allIcons = document.querySelectorAll('.playlist-item');
+
+        allIcons.forEach(item => {
             item.addEventListener('click', () => {
                 currentTrack = parseInt(item.dataset.track);
                 updateTrackUI();
                 if (!isPlaying) startPlaying();
+            });
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    currentTrack = parseInt(item.dataset.track);
+                    updateTrackUI();
+                    if (!isPlaying) startPlaying();
+                }
             });
         });
 
@@ -1636,6 +1660,100 @@
             } else {
                 document.documentElement.style.fontSize = '16px';
             }
+        });
+    })();
+
+    /* ═══════════════════════════════════════════════
+       GALLERY & LIGHTBOX MODULE
+       ═══════════════════════════════════════════════ */
+    (function initGallery() {
+        const modal = document.getElementById('lightbox-modal');
+        const imgEl = document.getElementById('lightbox-img');
+        const captionEl = document.getElementById('lightbox-caption');
+        const closeBtn = document.getElementById('lightbox-close');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        if (!modal) return;
+
+        let currentIndex = 0;
+        const images = [];
+
+        // Collect all images data
+        galleryItems.forEach((item, index) => {
+            const img = item.querySelector('img');
+            const caption = item.querySelector('.gallery-caption');
+            if (img) {
+                images.push({
+                    src: img.src,
+                    caption: caption ? caption.textContent : ''
+                });
+
+                // Add click listener to open lightbox
+                item.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+                // Keyboard support
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox(index);
+                    }
+                });
+            }
+        });
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxContent();
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            closeBtn.focus();
+        }
+
+        function closeLightbox() {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            // Return focus to the item that opened it
+            if (galleryItems[currentIndex]) {
+                galleryItems[currentIndex].focus();
+            }
+        }
+
+        function updateLightboxContent() {
+            if (!images[currentIndex]) return;
+            imgEl.src = images[currentIndex].src;
+            captionEl.textContent = images[currentIndex].caption;
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateLightboxContent();
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateLightboxContent();
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        nextBtn.addEventListener('click', showNext);
+        prevBtn.addEventListener('click', showPrev);
+
+        // Click outside image to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation in modal
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
         });
     })();
 
