@@ -1,0 +1,134 @@
+/* ═══════════════════════════════════════════════
+   PAINT.EXE — Drawing Application
+   ═══════════════════════════════════════════════ */
+
+.paint-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+/* ─── Toolbar ─── */
+.paint-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid var(--glass-border);
+    flex-wrap: wrap;
+    min-height: 44px;
+}
+
+.paint-toolbar .paint-tool {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.15s ease;
+}
+
+.paint-toolbar .paint-tool:hover {
+    background: rgba(124, 92, 252, 0.15);
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+.paint-toolbar .paint-tool.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.paint-separator {
+    width: 1px;
+    height: 24px;
+    background: var(--glass-border);
+    margin: 0 4px;
+}
+
+/* ─── Color Palette ─── */
+.paint-colors {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 4px;
+}
+
+.paint-color-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.paint-color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.paint-color-swatch.active {
+    border-color: #fff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Size Slider ─── */
+.paint-size-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.paint-size-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+}
+
+.paint-size-slider {
+    width: 60px;
+    accent-color: var(--accent);
+}
+
+/* ─── Canvas ─── */
+.paint-canvas-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.paint-canvas-wrap canvas {
+    cursor: crosshair;
+    image-rendering: auto;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Status Bar ─── */
+.paint-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--glass-border);
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+}

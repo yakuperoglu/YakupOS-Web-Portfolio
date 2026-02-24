@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════════════
+   BROWSER.EXE — Mini Web Browser
+   ═══════════════════════════════════════════════ */
+
+.browser-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+/* ─── Address Bar ─── */
+.browser-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.browser-nav-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.browser-nav-btn:hover {
+    background: rgba(124, 92, 252, 0.15);
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+.browser-url-bar {
+    flex: 1;
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-family: var(--font-mono);
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.browser-url-bar:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.browser-go-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.browser-go-btn:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ─── Bookmarks Bar ─── */
+.browser-bookmarks {
+    display: flex;
+    gap: 2px;
+    padding: 4px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--glass-border);
+    overflow-x: auto;
+}
+
+.browser-bookmark {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.browser-bookmark:hover {
+    background: rgba(124, 92, 252, 0.1);
+    color: var(--text-primary);
+}
+
+.browser-bookmark.active {
+    background: rgba(124, 92, 252, 0.15);
+    color: var(--accent);
+}
+
+/* ─── Content Area ─── */
+.browser-viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    background: #0d0d14;
+}
+
+.browser-viewport iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 2;
+    background: #fff;
+}
+
+/* ─── Browser Pages (built-in content) ─── */
+.browser-page {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 24px;
+    background: #0d0d14;
+    color: var(--text-secondary);
+}
+
+.browser-page.active {
+    display: block;
+}
+
+.browser-page h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.browser-page h2 {
+    font-size: 16px;
+    color: var(--accent);
+    margin: 20px 0 8px;
+}
+
+.browser-page p {
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-size: 13px;
+}
+
+.browser-page .search-box {
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto;
+    display: block;
+    padding: 14px 20px;
+    border: 2px solid var(--glass-border);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.browser-page .search-box:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.browser-homepage {
+    text-align: center;
+    padding-top: 60px !important;
+}
+
+.browser-homepage h1 {
+    font-size: 32px;
+    background: linear-gradient(135deg, var(--accent), #9b7dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+.browser-homepage p {
+    color: var(--text-dim);
+    margin-bottom: 24px;
+}
+
+.browser-quick-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 380px;
+    margin: 24px auto 0;
+}
+
+.browser-quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+.browser-quick-link:hover {
+    background: rgba(124, 92, 252, 0.12);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.browser-quick-link-icon {
+    font-size: 24px;
+}
+
+/* ─── Status Bar ─── */
+.browser-status {
+    display: flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--glass-border);
+    font-size: 10px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+}
+
+.browser-status .secure-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #2ecc71;
+}
+
+/* ─── Error Page ─── */
+.browser-error-page {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.browser-open-external {
+    padding: 10px 24px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    background: rgba(124, 92, 252, 0.15);
+    color: var(--accent);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.browser-open-external:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 12px var(--accent-glow);
+}

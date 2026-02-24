@@ -34,6 +34,10 @@
     <link rel="stylesheet" href="css/gallery.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/taskbar.css" />
+    <link rel="stylesheet" href="css/paint.css" />
+    <link rel="stylesheet" href="css/calendar.css" />
+    <link rel="stylesheet" href="css/taskmanager.css" />
+    <link rel="stylesheet" href="css/browser.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 </head>
 
@@ -241,6 +245,62 @@
                     </svg>
                 </div>
                 <span class="icon-label">Settings.sys</span>
+            </div>
+
+            <!-- Paint.exe -->
+            <div class="desktop-icon" data-window="paint" tabindex="0" role="button" aria-label="Open Paint">
+                <div class="icon-graphic">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="6" width="52" height="52" rx="6" stroke="currentColor" stroke-width="2.5" />
+                        <path d="M18 46L28 28L36 38L42 30L50 46" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="24" cy="22" r="5" stroke="currentColor" stroke-width="2.5" />
+                    </svg>
+                </div>
+                <span class="icon-label">Paint.exe</span>
+            </div>
+
+            <!-- Calendar.exe -->
+            <div class="desktop-icon" data-window="calendar" tabindex="0" role="button" aria-label="Open Calendar">
+                <div class="icon-graphic">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="12" width="48" height="44" rx="4" stroke="currentColor" stroke-width="2.5" />
+                        <path d="M8 24H56" stroke="currentColor" stroke-width="2.5" />
+                        <path d="M20 8V16M44 8V16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                        <rect x="16" y="30" width="8" height="8" rx="2" fill="currentColor" opacity="0.4" />
+                        <rect x="28" y="30" width="8" height="8" rx="2" fill="currentColor" opacity="0.4" />
+                        <rect x="40" y="30" width="8" height="8" rx="2" fill="currentColor" opacity="0.4" />
+                        <rect x="16" y="42" width="8" height="8" rx="2" fill="currentColor" opacity="0.8" />
+                    </svg>
+                </div>
+                <span class="icon-label">Calendar.exe</span>
+            </div>
+
+            <!-- TaskManager -->
+            <div class="desktop-icon" data-window="taskmanager" tabindex="0" role="button"
+                aria-label="Open Task Manager">
+                <div class="icon-graphic">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="6" width="52" height="52" rx="6" stroke="currentColor" stroke-width="2.5" />
+                        <path d="M16 18H48M16 28H48M16 38H48M16 48H36" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" opacity="0.3" />
+                        <path d="M14 18h6M14 28h12M14 38h8M14 48h10" stroke="currentColor" stroke-width="3"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <span class="icon-label">Task Manager</span>
+            </div>
+
+            <!-- Browser.exe -->
+            <div class="desktop-icon" data-window="browser" tabindex="0" role="button" aria-label="Open Browser">
+                <div class="icon-graphic">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="2.5" />
+                        <path d="M10 24H54M10 40H54" stroke="currentColor" stroke-width="2.5" />
+                        <ellipse cx="32" cy="32" rx="12" ry="26" stroke="currentColor" stroke-width="2.5" />
+                    </svg>
+                </div>
+                <span class="icon-label">Browser.exe</span>
             </div>
 
         </div><!-- /desktop-icons -->
@@ -1082,6 +1142,266 @@ $ cat skills.json
             </div>
         </section>
 
+        <!-- ─── Paint.exe Window ─── -->
+        <section id="window-paint" class="window" data-id="paint" aria-label="Paint application"
+            style="top:40px;left:160px;width:640px;height:520px;">
+            <header class="window-titlebar" data-drag-handle>
+                <div class="window-title">
+                    <span class="window-title-icon">🎨</span>
+                    <span>Paint.exe</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn minimize" aria-label="Minimize" data-action="minimize">−</button>
+                    <button class="win-btn maximize" aria-label="Maximize" data-action="maximize">+</button>
+                    <button class="win-btn close" aria-label="Close" data-action="close">×</button>
+                </div>
+            </header>
+            <div class="window-body paint-body">
+                <div class="paint-toolbar">
+                    <button class="paint-tool active" data-tool="brush" title="Brush">✏️</button>
+                    <button class="paint-tool" data-tool="eraser" title="Eraser">🧹</button>
+                    <button class="paint-tool" data-tool="line" title="Line">╱</button>
+                    <button class="paint-tool" data-tool="rect" title="Rectangle">▭</button>
+                    <button class="paint-tool" data-tool="circle" title="Ellipse">◯</button>
+                    <button class="paint-tool" data-tool="fill" title="Fill">🪣</button>
+                    <div class="paint-separator"></div>
+                    <button class="paint-tool" id="paint-undo" title="Undo">↩</button>
+                    <button class="paint-tool" id="paint-clear" title="Clear">🗑</button>
+                    <button class="paint-tool" id="paint-download" title="Download">💾</button>
+                    <div class="paint-separator"></div>
+                    <div class="paint-colors">
+                        <div class="paint-color-swatch active" data-color="#7c5cfc" style="background:#7c5cfc"></div>
+                        <div class="paint-color-swatch" data-color="#ff5f57" style="background:#ff5f57"></div>
+                        <div class="paint-color-swatch" data-color="#2ecc71" style="background:#2ecc71"></div>
+                        <div class="paint-color-swatch" data-color="#3498db" style="background:#3498db"></div>
+                        <div class="paint-color-swatch" data-color="#f39c12" style="background:#f39c12"></div>
+                        <div class="paint-color-swatch" data-color="#e91e8c" style="background:#e91e8c"></div>
+                        <div class="paint-color-swatch" data-color="#ffffff"
+                            style="background:#ffffff;border:1px solid rgba(255,255,255,0.3)"></div>
+                        <div class="paint-color-swatch" data-color="#000000"
+                            style="background:#000000;border:1px solid rgba(255,255,255,0.2)"></div>
+                    </div>
+                    <div class="paint-size-group">
+                        <span class="paint-size-label">Size</span>
+                        <input type="range" id="paint-size" class="paint-size-slider" min="1" max="20" value="4" />
+                    </div>
+                </div>
+                <div class="paint-canvas-wrap">
+                    <canvas id="paint-canvas" width="560" height="380"></canvas>
+                </div>
+                <div class="paint-status">
+                    <span>Tool: <span id="paint-status-tool">Brush</span></span>
+                    <span>Pos: <span id="paint-status-pos">0, 0</span></span>
+                    <span>560 × 380</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Calendar.exe Window ─── -->
+        <section id="window-calendar" class="window" data-id="calendar" aria-label="Calendar application"
+            style="top:60px;left:280px;width:360px;height:480px;">
+            <header class="window-titlebar" data-drag-handle>
+                <div class="window-title">
+                    <span class="window-title-icon">📅</span>
+                    <span>Calendar.exe</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn minimize" aria-label="Minimize" data-action="minimize">−</button>
+                    <button class="win-btn maximize" aria-label="Maximize" data-action="maximize">+</button>
+                    <button class="win-btn close" aria-label="Close" data-action="close">×</button>
+                </div>
+            </header>
+            <div class="window-body calendar-body">
+                <div class="cal-nav">
+                    <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">◀</button>
+                    <span class="cal-month-year" id="cal-month-year">February 2026</span>
+                    <button class="cal-nav-btn" id="cal-next" aria-label="Next month">▶</button>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+                <div class="cal-events" id="cal-events"></div>
+                <button class="cal-today-btn" id="cal-today-btn">Today</button>
+            </div>
+        </section>
+
+        <!-- ─── Task Manager Window ─── -->
+        <section id="window-taskmanager" class="window" data-id="taskmanager" aria-label="Task Manager"
+            style="top:50px;left:200px;width:560px;height:480px;">
+            <header class="window-titlebar" data-drag-handle>
+                <div class="window-title">
+                    <span class="window-title-icon">📋</span>
+                    <span>Task Manager</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn minimize" aria-label="Minimize" data-action="minimize">−</button>
+                    <button class="win-btn maximize" aria-label="Maximize" data-action="maximize">+</button>
+                    <button class="win-btn close" aria-label="Close" data-action="close">×</button>
+                </div>
+            </header>
+            <div class="window-body taskmanager-body">
+                <div class="tm-tabs">
+                    <button class="tm-tab active" data-panel="tm-processes">Processes</button>
+                    <button class="tm-tab" data-panel="tm-performance">Performance</button>
+                </div>
+                <div class="tm-content" id="tm-content">
+                    <div class="tm-panel active" id="tm-processes">
+                        <div class="tm-process-header">
+                            <div>Name</div>
+                            <div>CPU</div>
+                            <div>Memory</div>
+                            <div>Status</div>
+                        </div>
+                        <div id="tm-process-list"></div>
+                    </div>
+                    <div class="tm-panel" id="tm-performance">
+                        <div class="tm-perf-grid">
+                            <div class="tm-perf-card">
+                                <div class="tm-perf-label">CPU Usage</div>
+                                <div class="tm-perf-value" id="tm-cpu-value">0%</div>
+                                <div class="tm-usage-bar">
+                                    <div class="tm-usage-fill" id="tm-cpu-fill"></div>
+                                </div>
+                                <div class="tm-perf-sub" id="tm-cpu-sub">0% utilization</div>
+                            </div>
+                            <div class="tm-perf-card">
+                                <div class="tm-perf-label">Memory</div>
+                                <div class="tm-perf-value" id="tm-mem-value">0 MB</div>
+                                <div class="tm-usage-bar">
+                                    <div class="tm-usage-fill" id="tm-mem-fill"></div>
+                                </div>
+                                <div class="tm-perf-sub" id="tm-mem-sub">0/512 MB</div>
+                            </div>
+                            <div class="tm-perf-card">
+                                <div class="tm-perf-label">GPU</div>
+                                <div class="tm-perf-value">WebGL 2.0</div>
+                                <div class="tm-usage-bar">
+                                    <div class="tm-usage-fill" style="width:25%"></div>
+                                </div>
+                                <div class="tm-perf-sub">Hardware accelerated</div>
+                            </div>
+                            <div class="tm-perf-card">
+                                <div class="tm-perf-label">Network</div>
+                                <div class="tm-perf-value">Connected</div>
+                                <div class="tm-usage-bar">
+                                    <div class="tm-usage-fill" style="width:15%"></div>
+                                </div>
+                                <div class="tm-perf-sub">HTTPS · Low latency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tm-status-bar">
+                    <span id="tm-process-count">Processes: 0</span>
+                    <span id="tm-uptime">Uptime: 0m 0s</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Browser.exe Window ─── -->
+        <section id="window-browser" class="window" data-id="browser" aria-label="Browser application"
+            style="top:30px;left:140px;width:660px;height:520px;">
+            <header class="window-titlebar" data-drag-handle>
+                <div class="window-title">
+                    <span class="window-title-icon">🌐</span>
+                    <span>Browser.exe</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn minimize" aria-label="Minimize" data-action="minimize">−</button>
+                    <button class="win-btn maximize" aria-label="Maximize" data-action="maximize">+</button>
+                    <button class="win-btn close" aria-label="Close" data-action="close">×</button>
+                </div>
+            </header>
+            <div class="window-body browser-body">
+                <div class="browser-toolbar">
+                    <button class="browser-nav-btn" id="browser-back" title="Back">◀</button>
+                    <button class="browser-nav-btn" id="browser-fwd" title="Forward">▶</button>
+                    <button class="browser-nav-btn" id="browser-refresh" title="Refresh">⟳</button>
+                    <button class="browser-nav-btn" id="browser-home" title="Home">🏠</button>
+                    <input type="text" class="browser-url-bar" id="browser-url" value="yakupos://home"
+                        spellcheck="false" />
+                    <button class="browser-go-btn" id="browser-go" title="Go">→</button>
+                </div>
+                <div class="browser-bookmarks">
+                    <button class="browser-bookmark active" data-page="home">🏠 Home</button>
+                    <button class="browser-bookmark" data-page="about">👤 About Me</button>
+                    <button class="browser-bookmark" data-page="portfolio">📁 Portfolio</button>
+                    <button class="browser-bookmark" data-page="blog">📰 Blog</button>
+                </div>
+                <div class="browser-viewport" id="browser-viewport">
+                    <!-- Home Page -->
+                    <div class="browser-page browser-homepage active" id="browser-page-home">
+                        <h1>YakupOS Web</h1>
+                        <p>Your gateway to the retro-futuristic web</p>
+                        <input type="text" class="search-box" id="browser-search" placeholder="Search YakupOS..." />
+                        <div class="browser-quick-links">
+                            <div class="browser-quick-link" data-page="about">
+                                <span class="browser-quick-link-icon">👤</span>
+                                <span>About</span>
+                            </div>
+                            <div class="browser-quick-link" data-page="portfolio">
+                                <span class="browser-quick-link-icon">📁</span>
+                                <span>Projects</span>
+                            </div>
+                            <div class="browser-quick-link" data-page="blog">
+                                <span class="browser-quick-link-icon">📰</span>
+                                <span>Blog</span>
+                            </div>
+                            <div class="browser-quick-link" data-page="home">
+                                <span class="browser-quick-link-icon">⚙️</span>
+                                <span>Settings</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- About Page -->
+                    <div class="browser-page" id="browser-page-about">
+                        <h1>About Me</h1>
+                        <p>Hi! I'm <strong>Yakup Eroğlu</strong>, a passionate Full-Stack Developer and Creative
+                            Technologist.</p>
+                        <h2>🎓 Education</h2>
+                        <p>Computer Engineering — 2022–2026</p>
+                        <h2>💡 Philosophy</h2>
+                        <p>I believe in crafting digital experiences that are both beautiful and functional. Every pixel
+                            matters, every interaction should delight.</p>
+                        <h2>🛠️ What I Do</h2>
+                        <p>I build web applications, mobile apps, games, and creative tools. From React dashboards to
+                            Unity 3D games, I love exploring the full spectrum of software development.</p>
+                    </div>
+                    <!-- Portfolio Page -->
+                    <div class="browser-page" id="browser-page-portfolio">
+                        <h1>Portfolio</h1>
+                        <h2>🎮 Escape Room Game</h2>
+                        <p>A 3D puzzle game built in Unity with atmospheric lighting, inventory system, and multi-level
+                            progression. Technologies: C#, Unity, 3D Modeling.</p>
+                        <h2>📱 Social Dare App</h2>
+                        <p>A mobile social platform where users challenge friends with dares, featuring real-time
+                            progress tracking and payments. Technologies: React Native, Node.js, MongoDB.</p>
+                        <h2>🌐 Portfolio OS</h2>
+                        <p>This very website! A retro-futuristic desktop experience built entirely with vanilla HTML,
+                            CSS, and JavaScript. No frameworks, no dependencies — just pure craft.</p>
+                        <h2>🤖 AI Dashboard</h2>
+                        <p>An analytics dashboard with real-time data visualization, dark mode, and AI-powered insights
+                            panel. Technologies: React, Python, PostgreSQL.</p>
+                    </div>
+                    <!-- Blog Page -->
+                    <div class="browser-page" id="browser-page-blog">
+                        <h1>Blog</h1>
+                        <h2>📝 Building a Desktop OS in the Browser</h2>
+                        <p>How I created a retro-futuristic desktop experience using only vanilla HTML, CSS, and
+                            JavaScript. From window management to drag-and-drop icons, here's the journey.</p>
+                        <h2>🎨 Design Systems for Side Projects</h2>
+                        <p>Why even personal projects deserve a cohesive design system. Tips on creating CSS custom
+                            properties, glassmorphism effects, and consistent UI patterns.</p>
+                        <h2>🎮 From Web Dev to Game Dev</h2>
+                        <p>My transition from building web apps to creating 3D games in Unity. The skills that
+                            transferred, the new ones I had to learn, and why you should try it too.</p>
+                    </div>
+                </div>
+                <div class="browser-status">
+                    <span class="secure-badge" id="browser-secure-badge">🔒 Secure</span>
+                    <span style="margin-left:8px" id="browser-status-text">yakupos://home</span>
+                </div>
+            </div>
+        </section>
+
     </main><!-- /desktop -->
 
     <!-- ═══════════════════════════════════════════════
@@ -1109,6 +1429,10 @@ $ cat skills.json
             <li><button class="start-menu-item" data-window="gallery"><span>🖼️</span> Gallery</button></li>
             <li><button class="start-menu-item" data-window="settings"><span>⚙️</span> Settings.sys</button></li>
             <li><button class="start-menu-item" data-window="contact"><span>✉️</span> Contact.txt</button></li>
+            <li><button class="start-menu-item" data-window="paint"><span>🎨</span> Paint.exe</button></li>
+            <li><button class="start-menu-item" data-window="calendar"><span>📅</span> Calendar.exe</button></li>
+            <li><button class="start-menu-item" data-window="taskmanager"><span>📋</span> Task Manager</button></li>
+            <li><button class="start-menu-item" data-window="browser"><span>🌐</span> Browser.exe</button></li>
         </ul>
         <div class="start-menu-footer">
             <span class="mono-sm">v2.0.26 • 2026</span>
@@ -1160,6 +1484,10 @@ $ cat skills.json
     <script src="js/settings.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/apps.js"></script>
+    <script src="js/paint.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/taskmanager.js"></script>
+    <script src="js/browser.js"></script>
 </body>
 
 </html>

@@ -165,6 +165,10 @@
         explorer: '🗂️ Explorer.exe',
         notepad: '📝 Notepad.txt',
         calculator: '🧮 Calculator.exe',
+        paint: '🎨 Paint.exe',
+        calendar: '📅 Calendar.exe',
+        taskmanager: '📋 Task Manager',
+        browser: '🌐 Browser.exe',
     };
 
     /**
