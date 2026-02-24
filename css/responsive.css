@@ -1,0 +1,259 @@
+/* ═══════════════════════════════════════════════
+   MOBILE RESPONSIVE — ≤ 768px
+   Stack windows as elegant scrollable cards
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        height: auto;
+    }
+
+    #desktop {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+        padding: 20px 16px;
+        padding-bottom: calc(var(--taskbar-h) + 24px);
+    }
+
+    /* Hide desktop icons on mobile */
+    #desktop-icons {
+        display: none;
+    }
+
+    /* ─── Windows become stacked cards ─── */
+    .window {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: unset;
+        margin-bottom: 20px;
+        border-radius: var(--radius);
+        /* Keep display logic to inline styles set by JS, but if open, ensure flex */
+    }
+
+    .window.maximized {
+        border-radius: var(--radius);
+        height: auto !important;
+    }
+
+    /* Disable drag cursor */
+    .window-titlebar {
+        cursor: default;
+    }
+
+    /* Hide minimize/maximize on mobile, keep close optional */
+    .win-btn.minimize,
+    .win-btn.maximize {
+        display: none;
+    }
+
+    /* Window body no fixed height */
+    .window-body {
+        max-height: none;
+        overflow: visible;
+    }
+
+    /* Project grid single column */
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Taskbar simplify */
+    #start-btn span:not(.start-diamond) {
+        display: none;
+    }
+
+    .start-menu {
+        width: calc(100vw - 20px);
+        left: 10px;
+        right: 10px;
+    }
+
+    /* Mobile header */
+    #desktop::before {
+        content: 'YakupOS';
+        display: block;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-shadow: 0 0 20px var(--accent-glow);
+        padding: 16px 0 24px;
+        letter-spacing: 0.06em;
+    }
+}
+
+/* Small mobile tweaks */
+@media (max-width: 480px) {
+    .about-hero h1 {
+        font-size: 1.25rem;
+    }
+
+    .window-body {
+        padding: 16px;
+    }
+
+    .project-card {
+        padding: 14px;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   LIGHT THEME OVERRIDES
+   ═══════════════════════════════════════════════ */
+[data-theme="light"] .desktop-icon:hover,
+[data-theme="light"] .desktop-icon:focus-visible {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .window-titlebar {
+    background: rgba(0, 0, 0, 0.04);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .project-card,
+[data-theme="light"] .cert-card,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .stats-section,
+[data-theme="light"] .music-playlist,
+[data-theme="light"] .setting-row,
+[data-theme="light"] .ttt-cell,
+[data-theme="light"] .mem-card {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .cert-card:hover,
+[data-theme="light"] .stat-card:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .terminal-body,
+[data-theme="light"] .folder-body,
+[data-theme="light"] .games-body,
+[data-theme="light"] .stats-body,
+[data-theme="light"] .music-body,
+[data-theme="light"] .settings-body,
+[data-theme="light"] .explorer-body,
+[data-theme="light"] .notepad-body,
+[data-theme="light"] .calc-body {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="light"] .explorer-sidebar {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .explorer-nav-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .explorer-path {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .notepad-toolbar,
+[data-theme="light"] .calc-display {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .notepad-btn,
+[data-theme="light"] .calc-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .notepad-btn:hover,
+[data-theme="light"] .calc-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .calc-op {
+    background: rgba(0, 229, 255, 0.1);
+}
+
+[data-theme="light"] .calc-equal {
+    background: var(--accent);
+    color: white;
+}
+
+[data-theme="light"] .calc-equal:hover {
+    background: #8b6dfc;
+}
+
+[data-theme="light"] .terminal-input-row {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] .playlist-item:hover,
+[data-theme="light"] .folder-item:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .about-terminal {
+    background: rgba(200, 200, 200, 0.2);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .setting-select {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .ttt-cell:hover:not(.taken),
+[data-theme="light"] .mem-card:hover:not(.flipped):not(.matched) {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] #snake-canvas {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .window {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+[data-theme="light"] .window.focused {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 60px -10px var(--accent-glow);
+}
+
+[data-theme="light"] .taskbar-tab {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .taskbar-tab:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .taskbar-tab.active {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .start-menu {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .start-menu-item:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .boot-progress {
+    background: rgba(0, 0, 0, 0.08);
+}

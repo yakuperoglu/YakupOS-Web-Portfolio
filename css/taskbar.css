@@ -1,0 +1,198 @@
+/* ═══════════════════════════════════════════════
+   START MENU
+   ═══════════════════════════════════════════════ */
+.start-menu {
+    position: fixed;
+    bottom: calc(var(--taskbar-h) + 8px);
+    left: 10px;
+    width: 240px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(22px) saturate(1.5);
+    -webkit-backdrop-filter: blur(22px) saturate(1.5);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 44px rgba(0, 0, 0, 0.55);
+    z-index: 90000;
+    overflow: hidden;
+    animation: menuOpen 0.28s var(--ease-spring) both;
+}
+
+.start-menu[hidden] {
+    display: none;
+}
+
+@keyframes menuOpen {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.95);
+    }
+}
+
+.start-menu-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.start-menu-logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.start-menu-list {
+    list-style: none;
+    padding: 8px 0;
+}
+
+.start-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 18px;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-align: left;
+}
+
+.start-menu-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.start-menu-footer {
+    padding: 10px 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mono-sm {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+}
+
+/* ═══════════════════════════════════════════════
+   TASKBAR
+   ═══════════════════════════════════════════════ */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--taskbar-h);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    background: rgba(10, 10, 26, 0.82);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 80000;
+}
+
+#start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xs);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+#start-btn:hover,
+#start-btn.active {
+    background: rgba(124, 92, 252, 0.2);
+    border-color: var(--accent);
+}
+
+.start-diamond {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+/* ─── Taskbar Tabs ─── */
+#taskbar-tabs {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+#taskbar-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.taskbar-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-xs);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+    font-size: 0.76rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.taskbar-tab:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+}
+
+.taskbar-tab.active {
+    background: rgba(124, 92, 252, 0.18);
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+/* ─── Taskbar Widgets ─── */
+#taskbar-tray {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 16px;
+}
+
+#weather-widget {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: default;
+}
+
+#weather-icon {
+    font-size: 0.9rem;
+}
+
+#clock {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+}

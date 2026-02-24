@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════════════
+   DESKTOP — main canvas, grid background, icons
+   ═══════════════════════════════════════════════ */
+#desktop {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - var(--taskbar-h));
+    overflow: hidden;
+}
+
+/* ─── Retro Grid Background ─── */
+#grid-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background:
+        /* radial glow in the center */
+        radial-gradient(ellipse at 50% 0%, var(--grid-glow) 0%, transparent 60%),
+        /* base dark */
+        var(--bg-dark);
+}
+
+#grid-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        /* vertical lines */
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        /* horizontal lines */
+        linear-gradient(0deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridScroll 20s linear infinite;
+}
+
+#grid-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background:
+        linear-gradient(to bottom,
+            transparent 0%,
+            var(--grid-glow) 80%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+@keyframes gridScroll {
+    to {
+        background-position: 60px 60px;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   DESKTOP ICONS
+   ═══════════════════════════════════════════════ */
+#desktop-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.desktop-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100px;
+    padding: 12px 6px;
+    border-radius: var(--radius-sm);
+    cursor: grab;
+    transition: background 0.2s, transform 0.15s var(--ease-spring);
+    outline: none;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.desktop-icon:hover,
+.desktop-icon:focus-visible {
+    background: rgba(255, 255, 255, 0.06);
+    transform: scale(1.04);
+}
+
+.desktop-icon:active {
+    cursor: grabbing;
+}
+
+.desktop-icon.icon-dragging {
+    z-index: 9999;
+    opacity: 0.85;
+    transform: scale(1.08);
+    cursor: grabbing;
+    transition: none;
+}
+
+.desktop-icon.icon-snapping {
+    transition: top 0.2s var(--ease-out), left 0.2s var(--ease-out);
+}
+
+.icon-graphic {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+    transition: filter 0.3s;
+}
+
+.desktop-icon:hover .icon-graphic {
+    filter: drop-shadow(0 0 16px var(--accent-glow));
+}
+
+.icon-graphic svg {
+    width: 42px;
+    height: 42px;
+}
+
+.icon-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-primary);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.03em;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

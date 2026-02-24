@@ -1,0 +1,303 @@
+/* ═══════════════════════════════════════════════
+   GAMES FOLDER + GAME WINDOWS
+   ═══════════════════════════════════════════════ */
+
+/* Folder view */
+.folder-body {
+    padding: 16px !important;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.folder-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 8px;
+}
+
+.folder-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100px;
+    padding: 14px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.folder-item:hover {
+    background: rgba(124, 92, 252, 0.1);
+    border-color: rgba(124, 92, 252, 0.25);
+    transform: translateY(-2px);
+}
+
+.folder-item:active {
+    transform: translateY(0);
+    background: rgba(124, 92, 252, 0.18);
+}
+
+.folder-item-icon {
+    font-size: 2.4rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 6px rgba(124, 92, 252, 0.3));
+}
+
+.folder-item-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-primary);
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Game windows shared */
+.games-body {
+    padding: 8px 12px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.game-hud {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px 8px 10px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+}
+
+#snake-canvas {
+    border: 1px solid rgba(124, 92, 252, 0.3);
+    border-radius: var(--radius-xs);
+    background: rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.game-hint {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    margin-top: 8px;
+    text-align: center;
+}
+
+.game-btn {
+    margin-top: 10px;
+    padding: 8px 24px;
+    background: rgba(124, 92, 252, 0.15);
+    border: 1px solid rgba(124, 92, 252, 0.3);
+    border-radius: var(--radius-xs);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.game-btn:hover {
+    background: rgba(124, 92, 252, 0.25);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* Tic-Tac-Toe */
+.ttt-board {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 4px;
+    margin: 10px 0;
+}
+
+.ttt-cell {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: var(--radius-xs);
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ttt-cell:hover:not(.taken) {
+    background: rgba(124, 92, 252, 0.1);
+    border-color: var(--accent);
+}
+
+.ttt-cell.x {
+    color: var(--accent);
+}
+
+.ttt-cell.o {
+    color: var(--accent-secondary);
+}
+
+.ttt-cell.win {
+    background: rgba(124, 92, 252, 0.2);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Memory */
+.mem-board {
+    display: grid;
+    grid-template-columns: repeat(4, 64px);
+    grid-template-rows: repeat(4, 64px);
+    gap: 6px;
+    margin: 10px 0;
+}
+
+.mem-card {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: var(--radius-xs);
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    user-select: none;
+}
+
+.mem-card:hover:not(.flipped):not(.matched) {
+    background: rgba(124, 92, 252, 0.12);
+    border-color: var(--accent);
+    transform: scale(1.05);
+}
+
+.mem-card.flipped {
+    background: rgba(124, 92, 252, 0.15);
+    border-color: var(--accent);
+}
+
+.mem-card.matched {
+    background: rgba(57, 255, 160, 0.1);
+    border-color: var(--accent-green);
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* Minesweeper */
+.mine-hud-box {
+    background: rgba(0, 0, 0, 0.6);
+    color: #ff3333;
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border: 1px inset rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    letter-spacing: 2px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.mine-smiley-btn {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px outset rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
+}
+
+.mine-smiley-btn:active {
+    border-style: inset;
+    transform: scale(0.95);
+}
+
+.mine-board {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+    gap: 2px;
+    margin: 10px auto;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    border: 2px inset rgba(255, 255, 255, 0.2);
+    justify-content: center;
+}
+
+.mine-cell {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px outset rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+.mine-cell:active:not(.revealed):not(.flagged) {
+    border-style: inset;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.mine-cell.revealed {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+    cursor: default;
+}
+
+.mine-cell.flagged {
+    color: #ff5f57;
+}
+
+.mine-cell.boom {
+    background: #ff5f57 !important;
+}
+
+/* Minesweeper Numbers */
+.mine-1 {
+    color: #39ffa0;
+}
+
+.mine-2 {
+    color: #00d4ff;
+}
+
+.mine-3 {
+    color: #ff5caa;
+}
+
+.mine-4 {
+    color: #7c5cfc;
+}
+
+.mine-5 {
+    color: #ffad33;
+}
+
+.mine-6 {
+    color: #00e5ff;
+}
+
+.mine-7 {
+    color: #ff5f57;
+}
+
+.mine-8 {
+    color: #eaeaff;
+}

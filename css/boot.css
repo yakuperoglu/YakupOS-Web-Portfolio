@@ -1,0 +1,77 @@
+/* ═══════════════════════════════════════════════
+   BOOT SCREEN
+   ═══════════════════════════════════════════════ */
+#boot-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-dark);
+    transition: opacity 0.6s var(--ease-out), visibility 0.6s;
+}
+
+#boot-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.boot-content {
+    text-align: center;
+}
+
+.boot-logo {
+    font-family: var(--font-mono);
+    font-size: 3.4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-shadow: 0 0 30px var(--accent-glow);
+    margin-bottom: 1rem;
+}
+
+.blink {
+    animation: blinkCursor 1s steps(2) infinite;
+}
+
+@keyframes blinkCursor {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.boot-text {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.boot-progress {
+    width: 260px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.boot-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+    border-radius: 4px;
+    animation: bootLoad 2s var(--ease-out) forwards;
+}
+
+@keyframes bootLoad {
+    to {
+        width: 100%;
+    }
+}
