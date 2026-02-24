@@ -1686,7 +1686,7 @@
             const caption = item.querySelector('.gallery-caption');
             if (img) {
                 images.push({
-                    src: img.src,
+                    src: img.dataset.full || img.src,
                     caption: caption ? caption.textContent : ''
                 });
 
@@ -1704,7 +1704,19 @@
             }
         });
 
+        let hasPreloadedAll = false;
+
+        function preloadAllImages() {
+            if (hasPreloadedAll) return;
+            hasPreloadedAll = true;
+            images.forEach(imgData => {
+                const img = new Image();
+                img.src = imgData.src;
+            });
+        }
+
         function openLightbox(index) {
+            preloadAllImages();
             currentIndex = index;
             updateLightboxContent();
             modal.classList.add('active');
