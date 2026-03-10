@@ -1,4 +1,46 @@
 /* ═══════════════════════════════════════════════
+   TABLET RESPONSIVE — ≤ 1024px
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .browser-quick-links {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+    }
+
+    .browser-homepage {
+        padding-top: 32px !important;
+    }
+
+    .browser-homepage h1 {
+        font-size: 24px;
+    }
+
+    .browser-page .search-box {
+        max-width: 100%;
+    }
+
+    .browser-error-content {
+        max-width: calc(100% - 32px);
+        padding: 28px 20px;
+    }
+
+    .tm-process-header,
+    .tm-process-row {
+        grid-template-columns: 2fr 1fr 1fr;
+        font-size: 11px;
+    }
+
+    .tm-process-header > :nth-child(4),
+    .tm-process-row > :nth-child(4) {
+        display: none;
+    }
+}
+
+/* ═══════════════════════════════════════════════
    MOBILE RESPONSIVE — ≤ 768px
    Stack windows as elegant scrollable cards
    ═══════════════════════════════════════════════ */
@@ -12,26 +54,25 @@
         height: auto;
         min-height: 100vh;
         overflow: visible;
-        padding: 20px 16px;
-        padding-bottom: calc(var(--taskbar-h) + 24px);
+        padding: 12px 10px;
+        padding-bottom: calc(var(--taskbar-h) + 20px);
     }
 
-    /* Hide desktop icons on mobile */
     #desktop-icons {
         display: none;
     }
 
-    /* ─── Windows become stacked cards ─── */
+    /* ─── Windows → stacked cards ─── */
     .window {
         position: relative !important;
         top: auto !important;
         left: auto !important;
         width: 100% !important;
         height: auto !important;
+        min-width: unset !important;
         min-height: unset;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
         border-radius: var(--radius);
-        /* Keep display logic to inline styles set by JS, but if open, ensure flex */
     }
 
     .window.maximized {
@@ -39,67 +80,683 @@
         height: auto !important;
     }
 
-    /* Disable drag cursor */
     .window-titlebar {
         cursor: default;
+        height: 38px;
+        padding: 0 10px;
     }
 
-    /* Hide minimize/maximize on mobile, keep close optional */
     .win-btn.minimize,
     .win-btn.maximize {
         display: none;
     }
 
-    /* Window body no fixed height */
     .window-body {
         max-height: none;
         overflow: visible;
+        padding: 16px 14px;
     }
 
-    /* Project grid single column */
-    .project-grid {
-        grid-template-columns: 1fr;
+    /* ─── Taskbar ─── */
+    :root {
+        --taskbar-h: 46px;
     }
 
-    /* Taskbar simplify */
+    #taskbar {
+        gap: 6px;
+        padding: 0 8px;
+    }
+
+    #start-btn {
+        padding: 6px 10px;
+        font-size: 0.78rem;
+    }
+
     #start-btn span:not(.start-diamond) {
         display: none;
     }
 
-    .start-menu {
-        width: calc(100vw - 20px);
-        left: 10px;
-        right: 10px;
-        max-width: 360px;
+    .taskbar-tab {
+        padding: 5px 10px;
+        font-size: 0.7rem;
     }
 
-    /* Mobile header */
+    #taskbar-tray {
+        gap: 10px;
+        padding-left: 6px;
+    }
+
+    #weather-widget {
+        font-size: 0.75rem;
+    }
+
+    #weather-widget #weather-icon {
+        display: none;
+    }
+
+    #clock {
+        font-size: 0.72rem;
+    }
+
+    /* ─── Start Menu ─── */
+    .start-menu {
+        width: calc(100vw - 16px);
+        left: 8px;
+        right: 8px;
+        max-width: 340px;
+        max-height: calc(100vh - var(--taskbar-h) - 16px);
+    }
+
+    .start-pinned-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    }
+
+    .start-pin {
+        padding: 10px 6px 8px;
+    }
+
+    .start-menu-list {
+        max-height: 180px;
+    }
+
+    /* ─── About ─── */
+    .avatar-ring {
+        width: 70px;
+        height: 70px;
+    }
+
+    .about-hero h1 {
+        font-size: 1.25rem;
+    }
+
+    .about-terminal {
+        padding: 12px;
+    }
+
+    .about-terminal pre {
+        font-size: 0.7rem;
+    }
+
+    /* ─── Projects ─── */
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 14px;
+    }
+
+    .project-links {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* ─── Certificates ─── */
+    .cert-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .cert-info h3 {
+        white-space: normal;
+    }
+
+    /* ─── Explorer ─── */
+    .explorer-body {
+        flex-direction: column !important;
+    }
+
+    .explorer-sidebar {
+        width: 100% !important;
+        flex-direction: row !important;
+        overflow-x: auto;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 6px 8px;
+        gap: 2px;
+    }
+
+    .explorer-nav-item {
+        padding: 6px 12px;
+        white-space: nowrap;
+        font-size: 0.75rem;
+    }
+
+    .explorer-nav-item.active {
+        border-right: none;
+        border-bottom: 2px solid var(--accent);
+    }
+
+    .explorer-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    /* ─── Stats ─── */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    .tech-name {
+        width: 70px;
+        font-size: 0.65rem;
+    }
+
+    .stats-footer {
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+    }
+
+    /* ─── Music ─── */
+    .music-body {
+        padding: 14px !important;
+    }
+
+    .music-controls {
+        gap: 14px;
+    }
+
+    .music-volume {
+        width: 80%;
+    }
+
+    .music-track-name {
+        font-size: 0.95rem;
+    }
+
+    /* ─── Calendar ─── */
+    .calendar-body {
+        padding: 10px !important;
+    }
+
+    .cal-day {
+        font-size: 11px;
+    }
+
+    .cal-day-label {
+        font-size: 9px;
+    }
+
+    .cal-month-year {
+        font-size: 14px;
+    }
+
+    /* ─── Calculator ─── */
+    .calc-body {
+        padding: 10px !important;
+    }
+
+    .calc-current {
+        font-size: 1.5rem;
+    }
+
+    .calc-grid {
+        gap: 6px;
+    }
+
+    /* ─── Games ─── */
+    .folder-grid {
+        justify-content: center;
+    }
+
+    .folder-item {
+        width: 85px;
+    }
+
+    .ttt-board {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .ttt-cell {
+        width: auto;
+        height: auto;
+        aspect-ratio: 1;
+        font-size: 1.6rem;
+    }
+
+    .mem-board {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 4px;
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .mem-card {
+        width: auto;
+        height: auto;
+        aspect-ratio: 1;
+        font-size: 1.2rem;
+    }
+
+    .mine-board {
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        gap: 1px;
+        width: 100%;
+        max-width: 290px;
+        padding: 4px;
+    }
+
+    .mine-cell {
+        width: auto;
+        height: auto;
+        aspect-ratio: 1;
+        font-size: 0.75rem;
+    }
+
+    .mine-hud-box {
+        font-size: 1rem;
+        min-width: 48px;
+        padding: 3px 6px;
+    }
+
+    .mine-smiley-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.4rem;
+    }
+
+    .game-hud {
+        font-size: 0.7rem;
+        padding: 4px 4px 8px;
+    }
+
+    /* ─── Task Manager ─── */
+    .tm-tab {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .tm-process-header,
+    .tm-process-row {
+        grid-template-columns: 2fr 1fr;
+        gap: 6px;
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+
+    .tm-process-header > :nth-child(3),
+    .tm-process-row > :nth-child(3),
+    .tm-process-header > :nth-child(4),
+    .tm-process-row > :nth-child(4) {
+        display: none;
+    }
+
+    .tm-perf-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tm-perf-value {
+        font-size: 18px;
+    }
+
+    .tm-dialog {
+        max-width: calc(100vw - 32px);
+        padding: 20px 18px;
+    }
+
+    .tm-status-bar {
+        font-size: 9px;
+        padding: 4px 8px;
+    }
+
+    /* ─── Browser ─── */
+    .browser-toolbar {
+        padding: 6px 8px;
+        gap: 4px;
+    }
+
+    .browser-nav-btn {
+        width: 26px;
+        height: 26px;
+    }
+
+    .browser-url-bar {
+        height: 28px;
+        font-size: 11px;
+        padding: 0 8px;
+    }
+
+    .browser-bookmarks {
+        padding: 3px 8px;
+    }
+
+    .browser-bookmark {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .browser-page {
+        padding: 14px;
+    }
+
+    .browser-homepage h1 {
+        font-size: 20px;
+    }
+
+    .browser-quick-links {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        gap: 8px;
+    }
+
+    .browser-error-content {
+        max-width: calc(100% - 24px);
+        padding: 24px 16px;
+    }
+
+    .browser-error-title {
+        font-size: 16px;
+    }
+
+    .browser-status {
+        font-size: 9px;
+    }
+
+    /* ─── Settings ─── */
+    .settings-body {
+        padding: 14px !important;
+    }
+
+    .setting-row {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    /* ─── Paint ─── */
+    .paint-toolbar {
+        padding: 6px 8px;
+        gap: 4px;
+    }
+
+    .paint-size-slider {
+        width: 48px;
+    }
+
+    /* ─── Terminal ─── */
+    .terminal-output {
+        padding: 10px 12px;
+    }
+
+    /* ─── Notepad ─── */
+    .notepad-toolbar {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 6px 8px;
+    }
+
+    .notepad-btn {
+        padding: 4px 8px;
+        font-size: 0.72rem;
+    }
+
+    /* ─── Contact ─── */
+    .social-links {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .social-link {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* ─── Lock Screen ─── */
+    .lock-time {
+        font-size: clamp(3rem, 14vw, 5rem);
+    }
+
+    .lock-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.1rem;
+    }
+
+    .lock-user {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+
+    .lock-hint {
+        font-size: 0.75rem;
+    }
+
+    /* ─── Boot ─── */
+    .boot-logo {
+        font-size: 2.4rem;
+    }
+
+    .boot-progress {
+        width: 200px;
+    }
+
+    /* ─── Context Menu (hide on touch) ─── */
+    .ctx-menu {
+        display: none !important;
+    }
+
+    /* ─── Toast ─── */
+    .toast-container {
+        bottom: calc(var(--taskbar-h) + 10px);
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
+
+    .toast {
+        font-size: 0.8rem;
+        padding: 10px 12px;
+    }
+
+    /* ─── Mobile header ─── */
     #desktop::before {
         content: 'YakupOS';
         display: block;
         text-align: center;
         font-family: var(--font-mono);
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 700;
         color: var(--accent);
         text-shadow: 0 0 20px var(--accent-glow);
-        padding: 16px 0 24px;
+        padding: 10px 0 16px;
         letter-spacing: 0.06em;
     }
 }
 
-/* Small mobile tweaks */
+/* ═══════════════════════════════════════════════
+   SMALL MOBILE — ≤ 480px
+   ═══════════════════════════════════════════════ */
 @media (max-width: 480px) {
-    .about-hero h1 {
-        font-size: 1.25rem;
+    #desktop {
+        padding: 8px 6px;
+        padding-bottom: calc(var(--taskbar-h) + 16px);
+    }
+
+    .window {
+        margin-bottom: 10px;
+        border-radius: var(--radius-sm);
     }
 
     .window-body {
-        padding: 16px;
+        padding: 12px 10px;
+    }
+
+    .window-titlebar {
+        height: 36px;
+        padding: 0 8px;
+    }
+
+    .window-title {
+        font-size: 0.75rem;
+    }
+
+    .about-hero h1 {
+        font-size: 1.1rem;
     }
 
     .project-card {
-        padding: 14px;
+        padding: 12px;
+    }
+
+    .cert-card {
+        padding: 10px;
+    }
+
+    .stats-grid {
+        gap: 6px;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+
+    .stat-card {
+        padding: 10px 8px;
+    }
+
+    .ttt-board {
+        max-width: 210px;
+    }
+
+    .ttt-cell {
+        font-size: 1.3rem;
+    }
+
+    .mem-board {
+        max-width: 220px;
+    }
+
+    .mem-card {
+        font-size: 1rem;
+    }
+
+    .mine-board {
+        max-width: 250px;
+    }
+
+    .mine-cell {
+        font-size: 0.65rem;
+    }
+
+    .music-body {
+        padding: 10px !important;
+    }
+
+    .music-controls {
+        gap: 10px;
+    }
+
+    .music-btn-play {
+        font-size: 1.8rem;
+    }
+
+    .start-menu {
+        max-width: none;
+        width: calc(100vw - 12px);
+        left: 6px;
+        right: 6px;
+    }
+
+    .start-pinned-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .browser-nav-btn:nth-child(2) {
+        display: none;
+    }
+
+    .browser-go-btn {
+        width: 26px;
+        height: 26px;
+    }
+
+    .tm-tab {
+        padding: 6px 6px;
+        font-size: 9px;
+        letter-spacing: 0;
+    }
+
+    .cal-grid {
+        gap: 2px;
+    }
+
+    .cal-day {
+        font-size: 10px;
+        border-radius: 4px;
+    }
+
+    .lock-time {
+        font-size: 3rem;
+    }
+
+    .lock-date {
+        font-size: 0.82rem;
+    }
+
+    .lock-avatar {
+        width: 52px;
+        height: 52px;
+        font-size: 1rem;
+    }
+
+    .boot-logo {
+        font-size: 2rem;
+    }
+
+    .boot-progress {
+        width: 160px;
+    }
+
+    .boot-text {
+        font-size: 0.72rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   VERY SMALL — ≤ 360px (iPhone SE, Galaxy Fold)
+   ═══════════════════════════════════════════════ */
+@media (max-width: 360px) {
+    .start-pinned-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mine-board {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+    }
+
+    .ttt-board {
+        max-width: 180px;
+    }
+
+    .mem-board {
+        max-width: 190px;
+    }
+
+    .browser-bookmark:nth-child(n+3) {
+        display: none;
+    }
+
+    .tm-process-header,
+    .tm-process-row {
+        font-size: 10px;
+        padding: 5px 6px;
     }
 }
 

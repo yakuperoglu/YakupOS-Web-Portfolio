@@ -194,14 +194,19 @@
     function handleMobileChange(e) {
         OS.isMobile = e.matches;
         if (OS.isMobile) {
-            // Close start menu
             OS.startMenu.hidden = true;
             OS.startBtn.classList.remove('active');
 
-            // Remove maximized state from open windows so they flow naturally as cards
             OS.windows.forEach(win => {
                 if (win.classList.contains('maximized')) {
                     win.classList.remove('maximized');
+                }
+                // Reset inline position/size so CSS cards layout works
+                if (win.dataset.state === 'open') {
+                    win.style.top = '';
+                    win.style.left = '';
+                    win.style.width = '';
+                    win.style.height = '';
                 }
             });
             OS.updateTaskbar();
