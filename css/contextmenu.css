@@ -1,0 +1,90 @@
+/* ═══════════════════════════════════════════════
+   DESKTOP CONTEXT MENU (RIGHT-CLICK)
+   ═══════════════════════════════════════════════ */
+.ctx-menu {
+    position: fixed;
+    z-index: 90000;
+    min-width: 200px;
+    padding: 6px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px) saturate(1.5);
+    -webkit-backdrop-filter: blur(24px) saturate(1.5);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
+                0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+    animation: ctxOpen 0.15s var(--ease-out) both;
+    transform-origin: top left;
+}
+
+@keyframes ctxOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Menu items */
+.ctx-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 14px;
+    border: none;
+    border-radius: var(--radius-xs);
+    background: transparent;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-align: left;
+}
+
+.ctx-item .ti {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.ctx-item:hover .ti {
+    opacity: 1;
+}
+
+.ctx-item:hover {
+    background: rgba(124, 92, 252, 0.15);
+}
+
+.ctx-item:active {
+    background: rgba(124, 92, 252, 0.25);
+}
+
+/* Divider */
+.ctx-divider {
+    height: 1px;
+    margin: 4px 8px;
+    background: var(--glass-border);
+}
+
+/* ─── Light theme ─── */
+[data-theme="light"] .ctx-menu {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+[data-theme="light"] .ctx-item:hover {
+    background: rgba(124, 92, 252, 0.1);
+}
+
+[data-theme="light"] .ctx-divider {
+    background: rgba(0, 0, 0, 0.08);
+}

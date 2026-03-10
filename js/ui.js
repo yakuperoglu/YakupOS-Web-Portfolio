@@ -20,11 +20,34 @@
     setTimeout(dismissBoot, 2400);
 
     /* ─── START MENU ─── */
+    const startSearch = document.getElementById('start-search');
+    const pinnedSection = document.getElementById('start-pinned-section');
+    const allAppsSection = document.getElementById('start-allapps-section');
+    const searchResultsSection = document.getElementById('start-search-results');
+    const searchResultsList = document.getElementById('start-results-list');
+    const noResultsEl = document.getElementById('start-no-results');
+    const toggleAppsBtn = document.getElementById('start-toggle-apps');
+    const allAppsList = document.getElementById('start-apps-list');
+
+    let allAppsExpanded = false;
+
+    function closeStartMenu() {
+        OS.startMenu.hidden = true;
+        OS.startBtn.classList.remove('active');
+        OS.startBtn.setAttribute('aria-expanded', 'false');
+        if (startSearch) { startSearch.value = ''; resetSearch(); }
+    }
+
+    function openStartMenu() {
+        OS.startMenu.hidden = false;
+        OS.startBtn.classList.add('active');
+        OS.startBtn.setAttribute('aria-expanded', 'true');
+        setTimeout(() => { if (startSearch) startSearch.focus(); }, 100);
+    }
+
     function toggleStartMenu() {
-        const isOpen = !OS.startMenu.hidden;
-        OS.startMenu.hidden = isOpen;
-        OS.startBtn.classList.toggle('active', !isOpen);
-        OS.startBtn.setAttribute('aria-expanded', String(!isOpen));
+        if (!OS.startMenu.hidden) closeStartMenu();
+        else openStartMenu();
     }
 
     OS.startBtn.addEventListener('click', e => {
@@ -32,22 +55,80 @@
         toggleStartMenu();
     });
 
-    // Start menu items open windows
-    OS.startMenuItems.forEach(item => {
-        item.addEventListener('click', () => {
-            OS.openWindow(item.dataset.window);
-            OS.startMenu.hidden = true;
-            OS.startBtn.classList.remove('active');
-            OS.startBtn.setAttribute('aria-expanded', 'false');
-        });
+    function openWindowFromMenu(windowId) {
+        OS.openWindow(windowId);
+        closeStartMenu();
+    }
+
+    // Pinned buttons
+    document.querySelectorAll('.start-pin').forEach(btn => {
+        btn.addEventListener('click', () => openWindowFromMenu(btn.dataset.window));
     });
+
+    // All app items
+    OS.startMenuItems.forEach(item => {
+        item.addEventListener('click', () => openWindowFromMenu(item.dataset.window));
+    });
+
+    // Toggle All Apps
+    if (toggleAppsBtn) {
+        toggleAppsBtn.addEventListener('click', () => {
+            allAppsExpanded = !allAppsExpanded;
+            allAppsList.style.display = allAppsExpanded ? 'block' : 'none';
+            toggleAppsBtn.textContent = allAppsExpanded ? '‹ Hide' : 'Show all ›';
+        });
+    }
+
+    // Search functionality
+    function resetSearch() {
+        pinnedSection.style.display = '';
+        allAppsSection.style.display = '';
+        searchResultsSection.style.display = 'none';
+        document.querySelector('.start-menu .start-divider').style.display = '';
+    }
+
+    if (startSearch) {
+        startSearch.addEventListener('input', () => {
+            const query = startSearch.value.trim().toLowerCase();
+
+            if (!query) { resetSearch(); return; }
+
+            pinnedSection.style.display = 'none';
+            allAppsSection.style.display = 'none';
+            document.querySelector('.start-menu .start-divider').style.display = 'none';
+            searchResultsSection.style.display = 'block';
+            searchResultsList.innerHTML = '';
+
+            const allItems = document.querySelectorAll('#start-apps-list .start-menu-item');
+            let found = 0;
+
+            allItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    const li = document.createElement('li');
+                    const btn = document.createElement('button');
+                    btn.className = 'start-menu-item';
+                    btn.dataset.window = item.dataset.window;
+                    btn.innerHTML = item.innerHTML;
+                    btn.addEventListener('click', () => openWindowFromMenu(btn.dataset.window));
+                    li.appendChild(btn);
+                    searchResultsList.appendChild(li);
+                    found++;
+                }
+            });
+
+            noResultsEl.style.display = found === 0 ? 'block' : 'none';
+        });
+
+        startSearch.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeStartMenu();
+        });
+    }
 
     // Close start menu when clicking outside
     document.addEventListener('click', e => {
         if (!OS.startMenu.hidden && !OS.startMenu.contains(e.target) && !OS.startBtn.contains(e.target)) {
-            OS.startMenu.hidden = true;
-            OS.startBtn.classList.remove('active');
-            OS.startBtn.setAttribute('aria-expanded', 'false');
+            closeStartMenu();
         }
     });
 
@@ -73,6 +154,7 @@
 
         if (!WEB3FORMS_KEY) {
             btn.textContent = 'Demo mode — no API key';
+            if (OS.toast) OS.toast('Demo mode — no API key configured', 'warning', 3500);
             contactForm.reset();
             setTimeout(() => { btn.textContent = originalText; }, 3000);
             return;
@@ -93,11 +175,14 @@
             if (data.success) {
                 btn.textContent = 'Sent! ✓';
                 contactForm.reset();
+                if (OS.toast) OS.toast('Message sent successfully!', 'success');
             } else {
                 btn.textContent = 'Failed — try again';
+                if (OS.toast) OS.toast('Failed to send message', 'error');
             }
         } catch {
             btn.textContent = 'Network error';
+            if (OS.toast) OS.toast('Network error — please try again', 'error');
         }
 
         setTimeout(() => { btn.textContent = originalText; }, 3000);

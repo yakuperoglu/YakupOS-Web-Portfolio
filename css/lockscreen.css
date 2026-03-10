@@ -1,0 +1,138 @@
+/* ═══════════════════════════════════════════════
+   LOCK SCREEN
+   ═══════════════════════════════════════════════ */
+#lock-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0, 1),
+                opacity 0.7s cubic-bezier(0.4, 0, 0, 1);
+}
+
+#lock-screen.dismissed {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Blurred background layer */
+.lock-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-dark);
+    z-index: 0;
+}
+
+.lock-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(124, 92, 252, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 60%);
+}
+
+/* Content container */
+.lock-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: lockFadeIn 0.8s ease-out both;
+}
+
+@keyframes lockFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Large clock */
+.lock-time {
+    font-family: var(--font-ui);
+    font-size: clamp(4rem, 12vw, 7rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--text-primary);
+    text-shadow: 0 2px 40px rgba(124, 92, 252, 0.2);
+}
+
+/* Date */
+.lock-date {
+    font-family: var(--font-ui);
+    font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+}
+
+/* Avatar circle */
+.lock-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 4px 24px var(--accent-glow);
+    margin-bottom: 8px;
+}
+
+/* User name */
+.lock-user {
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 36px;
+}
+
+/* Unlock hint */
+.lock-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    animation: lockPulse 2.5s ease-in-out infinite;
+}
+
+.lock-arrow {
+    font-size: 1.2rem;
+    animation: lockBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes lockBounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+@keyframes lockPulse {
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 1; }
+}
+
+/* ─── Light theme ─── */
+[data-theme="light"] .lock-bg {
+    background: #f0f1f5;
+}
+
+[data-theme="light"] .lock-bg::after {
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(124, 92, 252, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(0, 229, 255, 0.08) 0%, transparent 60%);
+}

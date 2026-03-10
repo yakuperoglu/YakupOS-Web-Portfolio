@@ -98,10 +98,23 @@
         if (saved.accent) { applyAccent(saved.accent); }
     }
 
+    const OS = window.YakupOS;
+
     // Event listeners
-    themeSelect.addEventListener('change', (e) => { applyTheme(e.target.value); saveSettings(); });
-    wallSelect.addEventListener('change', (e) => { applyWallpaper(e.target.value); saveSettings(); });
-    fontSelect.addEventListener('change', (e) => { applyFontSize(e.target.value); saveSettings(); });
+    themeSelect.addEventListener('change', (e) => {
+        applyTheme(e.target.value);
+        saveSettings();
+        if (OS.toast) OS.toast(`Theme: ${e.target.value}`, 'info', 2500);
+    });
+    wallSelect.addEventListener('change', (e) => {
+        applyWallpaper(e.target.value);
+        saveSettings();
+    });
+    fontSelect.addEventListener('change', (e) => {
+        applyFontSize(e.target.value);
+        saveSettings();
+        if (OS.toast) OS.toast(`Font size: ${e.target.value}`, 'info', 2500);
+    });
 
     colorDots.forEach(dot => {
         dot.addEventListener('click', () => {

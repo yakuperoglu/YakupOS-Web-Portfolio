@@ -70,6 +70,7 @@
         width: calc(100vw - 20px);
         left: 10px;
         right: 10px;
+        max-width: 360px;
     }
 
     /* Mobile header */
@@ -146,6 +147,28 @@
 
 [data-theme="light"] .start-menu-header {
     border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] #start-search {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] #start-search:focus {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .start-pin {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .start-pin:hover {
+    background: rgba(124, 92, 252, 0.1);
+}
+
+[data-theme="light"] .start-divider {
+    background: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] .start-menu-item:hover {

@@ -284,6 +284,21 @@
     document.addEventListener('touchmove', onIconDragMove, { passive: false });
     document.addEventListener('touchend', onIconDragEnd);
 
+    function sortIcons() {
+        const occupied = {};
+        const iconList = Array.from(OS.desktopIcons);
+        const { rows } = getGridDimensions();
+        iconList.forEach((icon, idx) => {
+            const row = idx % rows;
+            const col = Math.floor(idx / rows);
+            occupied[row + ',' + col] = icon;
+            placeIconAtCell(icon, row, col, true);
+        });
+        saveIconPositions();
+    }
+
+    OS.sortIcons = sortIcons;
+
     // Keyboard support
     OS.desktopIcons.forEach(icon => {
         icon.addEventListener('keydown', e => {
