@@ -25,13 +25,17 @@
         termOutput.scrollTop = termOutput.scrollHeight;
     }
 
+    function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
     /**
      * Process a command string typed by the user.
      */
     function processCommand(raw) {
         const input = raw.trim();
-        // Echo the command
-        termPrint(`<span class="term-cmd">yakup@portfolio:~$</span> ${input}`, 'term-input-echo');
+        const safeInput = escapeHTML(input);
+        termPrint(`<span class="term-cmd">yakup@portfolio:~$</span> ${safeInput}`, 'term-input-echo');
 
         if (!input) return;
 
@@ -124,7 +128,7 @@
                     OS.openWindow(target);
                     termPrint(`Opened <span class="term-cmd">${target}</span>`, 'term-success');
                 } else {
-                    termPrint(`Unknown window: "${target}"`, 'term-error');
+                    termPrint(`Unknown window: "${escapeHTML(target)}"`, 'term-error');
                     termPrint('Available: ' + validWindows.join(', '), 'term-system');
                 }
                 break;
@@ -157,7 +161,7 @@
                 break;
 
             default:
-                termPrint(`Command not found: <span class="term-error">${cmd}</span>`, 'term-error');
+                termPrint(`Command not found: <span class="term-error">${escapeHTML(cmd)}</span>`, 'term-error');
                 termPrint('Type <span class="term-cmd">help</span> for available commands.', 'term-system');
         }
     }

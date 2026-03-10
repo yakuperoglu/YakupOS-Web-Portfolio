@@ -138,11 +138,11 @@
         overlay.innerHTML = `
             <div class="tm-dialog">
                 <div class="tm-dialog-icon">⚠️</div>
-                <div class="tm-dialog-title">Sistemi Sonlandır</div>
-                <div class="tm-dialog-text"><strong>${processName}</strong> sistem sürecidir.<br>Sonlandırmak istediğinize emin misiniz?</div>
+                <div class="tm-dialog-title">End System Process</div>
+                <div class="tm-dialog-text"><strong>${processName}</strong> is a system process.<br>Are you sure you want to end it?</div>
                 <div class="tm-dialog-buttons">
-                    <button class="tm-dialog-btn tm-dialog-cancel">İptal</button>
-                    <button class="tm-dialog-btn tm-dialog-confirm">Evet, Sonlandır</button>
+                    <button class="tm-dialog-btn tm-dialog-cancel">Cancel</button>
+                    <button class="tm-dialog-btn tm-dialog-confirm">Yes, End Task</button>
                 </div>
             </div>
         `;
@@ -158,10 +158,10 @@
             const dialog = overlay.querySelector('.tm-dialog');
             dialog.innerHTML = `
                 <div class="tm-dialog-icon">🛑</div>
-                <div class="tm-dialog-title">Erişim Reddedildi</div>
-                <div class="tm-dialog-text"><strong>${processName}</strong> sonlandırılamadı.<br>Bu işlem için yetkiniz yok.</div>
+                <div class="tm-dialog-title">Access Denied</div>
+                <div class="tm-dialog-text"><strong>${processName}</strong> could not be terminated.<br>You do not have permission for this operation.</div>
                 <div class="tm-dialog-buttons">
-                    <button class="tm-dialog-btn tm-dialog-cancel">Tamam</button>
+                    <button class="tm-dialog-btn tm-dialog-cancel">OK</button>
                 </div>
             `;
             dialog.querySelector('.tm-dialog-cancel').addEventListener('click', () => {
@@ -286,7 +286,27 @@
         if (stats) renderPerformance(stats);
     }
 
-    // Initial render and periodic updates
+    // Only update while task manager window is visible
+    let tmInterval = null;
+    const tmWin = document.getElementById('window-taskmanager');
+
+    function startTmUpdates() {
+        if (tmInterval) return;
+        update();
+        tmInterval = setInterval(update, 2000);
+    }
+
+    function stopTmUpdates() {
+        if (tmInterval) { clearInterval(tmInterval); tmInterval = null; }
+    }
+
+    if (tmWin) {
+        const tmObserver = new MutationObserver(() => {
+            if (tmWin.dataset.state === 'open') startTmUpdates();
+            else stopTmUpdates();
+        });
+        tmObserver.observe(tmWin, { attributes: true, attributeFilter: ['data-state'] });
+    }
+
     update();
-    setInterval(update, 2000);
 })();

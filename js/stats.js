@@ -10,15 +10,6 @@
 
     let statsAnimated = false;
 
-    // Observe when stats window opens to trigger animations
-    const observer = new MutationObserver(() => {
-        if (statsWin.dataset.state === 'open' && !statsAnimated) {
-            statsAnimated = true;
-            animateStats();
-        }
-    });
-    observer.observe(statsWin, { attributes: true, attributeFilter: ['data-state'] });
-
     function animateStats() {
         // Animate counter values
         statsWin.querySelectorAll('.stat-value').forEach(el => {
@@ -43,13 +34,32 @@
         }, 200);
     }
 
-    // Session uptime timer
+    // Session uptime timer — only tick while window is open
     const uptimeEl = document.getElementById('stats-uptime');
     const sessionStart = Date.now();
-    setInterval(() => {
-        const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
-        const m = Math.floor(elapsed / 60);
-        const s = elapsed % 60;
-        if (uptimeEl) uptimeEl.textContent = `Session: ${m}m ${s}s`;
-    }, 1000);
+    let uptimeInterval = null;
+
+    function startUptimeTick() {
+        if (uptimeInterval) return;
+        uptimeInterval = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
+            const m = Math.floor(elapsed / 60);
+            const s = elapsed % 60;
+            if (uptimeEl) uptimeEl.textContent = `Session: ${m}m ${s}s`;
+        }, 1000);
+    }
+
+    function stopUptimeTick() {
+        if (uptimeInterval) { clearInterval(uptimeInterval); uptimeInterval = null; }
+    }
+
+    const stateObserver = new MutationObserver(() => {
+        if (statsWin.dataset.state === 'open') {
+            if (!statsAnimated) { statsAnimated = true; animateStats(); }
+            startUptimeTick();
+        } else {
+            stopUptimeTick();
+        }
+    });
+    stateObserver.observe(statsWin, { attributes: true, attributeFilter: ['data-state'] });
 })();

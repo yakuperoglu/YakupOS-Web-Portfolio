@@ -105,9 +105,76 @@
 /* ═══════════════════════════════════════════════
    LIGHT THEME OVERRIDES
    ═══════════════════════════════════════════════ */
+
+/* ─── Taskbar ─── */
+[data-theme="light"] #taskbar {
+    background: rgba(255, 255, 255, 0.82);
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] #start-btn {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] #start-btn:hover,
+[data-theme="light"] #start-btn.active {
+    background: rgba(124, 92, 252, 0.12);
+}
+
+[data-theme="light"] .taskbar-tab {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .taskbar-tab:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .taskbar-tab.active {
+    background: rgba(124, 92, 252, 0.15);
+    border-color: var(--accent);
+}
+
+/* ─── Start Menu ─── */
+[data-theme="light"] .start-menu {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(22px) saturate(1.2);
+}
+
+[data-theme="light"] .start-menu-header {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .start-menu-item:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .start-menu-footer {
+    border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Desktop Icons ─── */
 [data-theme="light"] .desktop-icon:hover,
 [data-theme="light"] .desktop-icon:focus-visible {
     background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .icon-label {
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+/* ─── Windows ─── */
+[data-theme="light"] .window {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+[data-theme="light"] .window.focused {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 60px -10px var(--accent-glow);
 }
 
 [data-theme="light"] .window-titlebar {
@@ -115,6 +182,24 @@
     border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
+/* ─── Window Bodies ─── */
+[data-theme="light"] .terminal-body,
+[data-theme="light"] .folder-body,
+[data-theme="light"] .games-body,
+[data-theme="light"] .stats-body,
+[data-theme="light"] .music-body,
+[data-theme="light"] .settings-body,
+[data-theme="light"] .explorer-body,
+[data-theme="light"] .notepad-body,
+[data-theme="light"] .calc-body,
+[data-theme="light"] .paint-body,
+[data-theme="light"] .calendar-body,
+[data-theme="light"] .taskmanager-body,
+[data-theme="light"] .browser-body {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ─── Cards & Rows ─── */
 [data-theme="light"] .project-card,
 [data-theme="light"] .cert-card,
 [data-theme="light"] .stat-card,
@@ -130,39 +215,67 @@
 [data-theme="light"] .project-card:hover,
 [data-theme="light"] .cert-card:hover,
 [data-theme="light"] .stat-card:hover {
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(0, 0, 0, 0.07);
 }
 
-[data-theme="light"] .terminal-body,
-[data-theme="light"] .folder-body,
-[data-theme="light"] .games-body,
-[data-theme="light"] .stats-body,
-[data-theme="light"] .music-body,
-[data-theme="light"] .settings-body,
-[data-theme="light"] .explorer-body,
-[data-theme="light"] .notepad-body,
-[data-theme="light"] .calc-body {
-    background: rgba(255, 255, 255, 0.4);
+/* ─── Settings ─── */
+[data-theme="light"] .settings-heading {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
+[data-theme="light"] .setting-select {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .setting-select option {
+    background: #ffffff;
+    color: #111827;
+}
+
+[data-theme="light"] .color-dot.active {
+    border-color: #111827;
+}
+
+[data-theme="light"] .settings-footer-info {
+    color: var(--text-dim);
+}
+
+/* ─── Explorer ─── */
 [data-theme="light"] .explorer-sidebar {
     background: rgba(255, 255, 255, 0.5);
     border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .explorer-nav-item {
+    color: var(--text-primary);
 }
 
 [data-theme="light"] .explorer-nav-item:hover {
     background: rgba(0, 0, 0, 0.05);
 }
 
+[data-theme="light"] .explorer-nav-item.active {
+    background: rgba(124, 92, 252, 0.1);
+}
+
 [data-theme="light"] .explorer-path {
     background: rgba(255, 255, 255, 0.6);
     border-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
 }
 
+/* ─── Notepad / Calculator ─── */
 [data-theme="light"] .notepad-toolbar,
 [data-theme="light"] .calc-display {
     background: rgba(255, 255, 255, 0.5);
     border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .notepad-textarea {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--text-primary);
 }
 
 [data-theme="light"] .notepad-btn,
@@ -190,8 +303,34 @@
     background: #8b6dfc;
 }
 
+/* ─── Terminal ─── */
 [data-theme="light"] .terminal-input-row {
     background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .terminal-input {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .terminal-prompt {
+    color: var(--accent);
+}
+
+/* ─── About ─── */
+[data-theme="light"] .about-terminal {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .about-terminal pre,
+[data-theme="light"] .about-terminal code {
+    color: var(--text-secondary);
+}
+
+/* ─── Music ─── */
+[data-theme="light"] .playlist-item {
+    color: var(--text-primary);
 }
 
 [data-theme="light"] .playlist-item:hover,
@@ -199,22 +338,28 @@
     background: rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .about-terminal {
-    background: rgba(200, 200, 200, 0.2);
-    border-color: rgba(0, 0, 0, 0.1);
+[data-theme="light"] .music-progress-bar {
+    background: rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .setting-select {
-    background: rgba(255, 255, 255, 0.6);
-    border-color: rgba(0, 0, 0, 0.2);
-}
-
+/* ─── Contact Form ─── */
 [data-theme="light"] .form-group input,
 [data-theme="light"] .form-group textarea {
     background: rgba(0, 0, 0, 0.03);
-    border-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: var(--text-primary);
 }
 
+[data-theme="light"] .form-group label {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .send-btn {
+    background: var(--accent);
+    color: white;
+}
+
+/* ─── Games ─── */
 [data-theme="light"] .ttt-cell:hover:not(.taken),
 [data-theme="light"] .mem-card:hover:not(.flipped):not(.matched) {
     background: rgba(0, 0, 0, 0.08);
@@ -224,36 +369,177 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
-[data-theme="light"] .window {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+[data-theme="light"] .game-hud,
+[data-theme="light"] .game-hint {
+    color: var(--text-primary);
 }
 
-[data-theme="light"] .window.focused {
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 60px -10px var(--accent-glow);
-}
-
-[data-theme="light"] .taskbar-tab {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="light"] .taskbar-tab:hover {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] .taskbar-tab.active {
-    background: rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="light"] .start-menu {
-    background: rgba(255, 255, 255, 0.9);
+[data-theme="light"] .game-btn {
+    background: rgba(0, 0, 0, 0.06);
     border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+    color: var(--text-primary);
 }
 
-[data-theme="light"] .start-menu-item:hover {
+/* ─── Minesweeper ─── */
+[data-theme="light"] .mine-hud-box {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .mine-cell {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .mine-cell.revealed {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* ─── Stats bars ─── */
+[data-theme="light"] .stat-bar,
+[data-theme="light"] .tech-bar {
     background: rgba(0, 0, 0, 0.06);
 }
 
+[data-theme="light"] .stats-footer {
+    color: var(--text-dim);
+}
+
+/* ─── Calendar ─── */
+[data-theme="light"] .cal-day {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .cal-day.other-month {
+    color: var(--text-dim);
+}
+
+[data-theme="light"] .cal-nav-btn {
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Task Manager ─── */
+[data-theme="light"] .tm-tab {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-secondary);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .tm-tab.active {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .tm-process-header {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .tm-process-row {
+    border-color: rgba(0, 0, 0, 0.06);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .tm-status-bar {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .tm-perf-card {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .tm-usage-bar {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Browser ─── */
+[data-theme="light"] .browser-toolbar {
+    background: rgba(0, 0, 0, 0.04);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .browser-url-bar {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .browser-nav-btn {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .browser-bookmarks {
+    background: rgba(0, 0, 0, 0.02);
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .browser-viewport {
+    background: #f0f0f5;
+}
+
+[data-theme="light"] .browser-page {
+    background: #f0f0f5;
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .browser-page h1 {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .browser-page .search-box {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .browser-quick-link {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .browser-status {
+    background: rgba(0, 0, 0, 0.04);
+    border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Paint ─── */
+[data-theme="light"] .paint-toolbar {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .paint-tool {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .paint-status {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-secondary);
+}
+
+/* ─── Gallery lightbox ─── */
+[data-theme="light"] .gallery-caption {
+    color: var(--text-primary);
+}
+
+/* ─── Certificates ─── */
+[data-theme="light"] .cert-badge {
+    color: var(--accent);
+}
+
+[data-theme="light"] .cert-verify {
+    color: var(--accent);
+}
+
+/* ─── Boot progress ─── */
 [data-theme="light"] .boot-progress {
     background: rgba(0, 0, 0, 0.08);
 }

@@ -62,15 +62,45 @@
     updateClock();
     setInterval(updateClock, 1000);
 
-    /* ─── CONTACT FORM ─── */
+    /* ─── CONTACT FORM (Web3Forms) ─── */
     const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', e => {
+    const WEB3FORMS_KEY = contactForm.dataset.apikey || '';
+
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = contactForm.querySelector('.send-btn span');
         const originalText = btn.textContent;
-        btn.textContent = 'Sent! ✓';
-        contactForm.reset();
-        setTimeout(() => { btn.textContent = originalText; }, 2500);
+
+        if (!WEB3FORMS_KEY) {
+            btn.textContent = 'Demo mode — no API key';
+            contactForm.reset();
+            setTimeout(() => { btn.textContent = originalText; }, 3000);
+            return;
+        }
+
+        btn.textContent = 'Sending...';
+
+        try {
+            const formData = new FormData(contactForm);
+            formData.append('access_key', WEB3FORMS_KEY);
+
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                btn.textContent = 'Sent! ✓';
+                contactForm.reset();
+            } else {
+                btn.textContent = 'Failed — try again';
+            }
+        } catch {
+            btn.textContent = 'Network error';
+        }
+
+        setTimeout(() => { btn.textContent = originalText; }, 3000);
     });
 
     /* ─── RESPONSIVE HANDLER — desktop ↔ mobile ─── */
