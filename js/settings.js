@@ -10,6 +10,7 @@
     const themeSelect = document.getElementById('setting-theme');
     const wallSelect = document.getElementById('setting-wallpaper');
     const fontSelect = document.getElementById('setting-fontsize');
+    const langSelect = document.getElementById('setting-language');
     const colorDots = document.querySelectorAll('.color-dot');
 
     if (!themeSelect) return;
@@ -20,6 +21,7 @@
                 theme: themeSelect.value,
                 wallpaper: wallSelect.value,
                 fontSize: fontSelect.value,
+                language: langSelect ? langSelect.value : undefined,
                 accent: document.documentElement.style.getPropertyValue('--accent').trim() || '#7c5cfc',
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
@@ -96,9 +98,21 @@
         if (saved.wallpaper) { wallSelect.value = saved.wallpaper; applyWallpaper(saved.wallpaper); }
         if (saved.fontSize) { fontSelect.value = saved.fontSize; applyFontSize(saved.fontSize); }
         if (saved.accent) { applyAccent(saved.accent); }
+        if (saved.language && langSelect) {
+            langSelect.value = saved.language;
+        }
     }
 
     const OS = window.YakupOS;
+
+    // Uygulama ilk açıldığında dil ayarı varsa uygula
+    if (langSelect && OS.setLanguage) {
+        const initialLang = (saved && saved.language) || (OS.currentLang || 'en');
+        langSelect.value = initialLang;
+        if (OS.currentLang !== initialLang) {
+            OS.setLanguage(initialLang);
+        }
+    }
 
     // Event listeners
     themeSelect.addEventListener('change', (e) => {
@@ -122,4 +136,14 @@
             saveSettings();
         });
     });
+
+    if (langSelect) {
+        langSelect.addEventListener('change', (e) => {
+            if (OS.setLanguage) {
+                OS.setLanguage(e.target.value);
+            }
+            saveSettings();
+            if (OS.toast) OS.toast(`Language: ${e.target.value === 'tr' ? 'Türkçe' : 'English'}`, 'info', 2500);
+        });
+    }
 })();

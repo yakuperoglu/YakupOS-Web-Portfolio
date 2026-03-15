@@ -84,9 +84,9 @@
                 { name: 'readme.txt', type: 'file', icon: '📝' }
             ],
             documents: [
-                { name: 'Projects', type: 'folder', icon: '📁' },
-                { name: 'Certificates', type: 'folder', icon: '🏆' },
-                { name: 'cv.pdf', type: 'file', icon: '📋' }
+                { name: 'Projects', type: 'app', icon: '📁', appTarget: 'projects' },
+                { name: 'Certificates', type: 'app', icon: '🏆', appTarget: 'certificates' },
+                { name: 'cv.pdf', type: 'file', icon: '📋', url: 'assets/cv/YakupEroglu_CV.pdf' }
             ],
             games: [
                 { name: 'Snake.exe', type: 'app', icon: '🐍', appTarget: 'game-snake' },
@@ -162,6 +162,13 @@
                         npTextarea.value = "Welcome to YakupOS!\n\nThis is a retro modern web portfolio experience.\nEnjoy exploring!";
                         OS.openWindow('notepad');
                     }
+                } else if (item.url) {
+                    const a = document.createElement('a');
+                    a.href = item.url;
+                    a.download = item.name;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
                 }
             }
         }

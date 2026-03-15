@@ -83,15 +83,15 @@
                 termPrint('<span class="term-accent">▸</span> <span class="term-cmd">CityPulse</span>         ─  Turkcell akıllı şehir platformu', 'term-echo');
                 termPrint('<span class="term-accent">▸</span> <span class="term-cmd">SonicSpray</span>        ─  DEMEDUKIT havada çizim uygulaması', 'term-echo');
                 termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Portfolio OS</span>      ─  Bu retro-fütüristik masaüstü!', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Konsol Projeleri</span>  ─  TaskScheduler, BookshelfOrganizer, LibrarySystem, YachtSystem', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Console Projects</span> ─  TaskScheduler, BookshelfOrganizer, LibrarySystem, YachtSystem', 'term-echo');
                 termPrint('', 'term-echo');
-                termPrint('<span class="term-cyan">── Oyun Projeleri (Unity / C#) ──</span>', 'term-system');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Secrets of Masks</span>  ─  3D zindandan kaçış · Global Game Jam', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Echoes of Delirium</span> ─ 3D korku oyunu', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">HiLight</span>           ─  2D parkur · Game Jam 2.si', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Correct Color</span>    ─  Refleks & hız oyunu', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Red Dot Maze</span>     ─  2D labirent · 3 bölüm', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Red And Orange</span>   ─  2 kişilik 2D yarış', 'term-echo');
+                termPrint('<span class="term-cyan">── Game Projects (Unity / C#) ──</span>', 'term-system');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Secrets of Masks</span>  ─  3D dungeon escape · Global Game Jam', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Echoes of Delirium</span> ─ 3D horror game', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">HiLight</span>           ─  2D platformer · Game Jam 2nd place', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Correct Color</span>    ─  Reflex & speed game', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Red Dot Maze</span>     ─  2D maze · 3 levels', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Red And Orange</span>   ─  2-player 2D racing', 'term-echo');
                 termPrint('\nType <span class="term-cmd">open projects</span> to view them.', 'term-system');
                 break;
 
