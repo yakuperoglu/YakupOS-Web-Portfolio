@@ -75,15 +75,28 @@
                 break;
 
             case 'projects':
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Escape Room Game</span>  ─  Unity 3D puzzle game', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Social Dare App</span>   ─  React Native social platform', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Portfolio OS</span>      ─  This retro-futuristic desktop!', 'term-echo');
-                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">AI Dashboard</span>     ─  Analytics + AI insights', 'term-echo');
+                termPrint('<span class="term-cyan">── Yazılım Projeleri ──</span>', 'term-system');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Yaparmısın</span>         ─  İddia platformu (yaparmisin.com.tr)', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Nova AI CLI</span>       ─  AI terminal asistanı (npm)', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">SwapS</span>             ─  Beceri takas platformu (swaps.com.tr)', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Smart Campus</span>      ─  Okul yönetim sistemi (Vercel)', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">CityPulse</span>         ─  Turkcell akıllı şehir platformu', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">SonicSpray</span>        ─  DEMEDUKIT havada çizim uygulaması', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Portfolio OS</span>      ─  Bu retro-fütüristik masaüstü!', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Konsol Projeleri</span>  ─  TaskScheduler, BookshelfOrganizer, LibrarySystem, YachtSystem', 'term-echo');
+                termPrint('', 'term-echo');
+                termPrint('<span class="term-cyan">── Oyun Projeleri (Unity / C#) ──</span>', 'term-system');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Secrets of Masks</span>  ─  3D zindandan kaçış · Global Game Jam', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Echoes of Delirium</span> ─ 3D korku oyunu', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">HiLight</span>           ─  2D parkur · Game Jam 2.si', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Correct Color</span>    ─  Refleks & hız oyunu', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Red Dot Maze</span>     ─  2D labirent · 3 bölüm', 'term-echo');
+                termPrint('<span class="term-accent">▸</span> <span class="term-cmd">Red And Orange</span>   ─  2 kişilik 2D yarış', 'term-echo');
                 termPrint('\nType <span class="term-cmd">open projects</span> to view them.', 'term-system');
                 break;
 
             case 'contact':
-                termPrint('📧  <span class="term-cyan">Email:</span>    hello@example.com', 'term-echo');
+                termPrint('📧  <span class="term-cyan">Email:</span>    yakuperoglu@outlook.com', 'term-echo');
                 termPrint('🐙  <span class="term-cyan">GitHub:</span>   github.com/yakuperoglu', 'term-echo');
                 termPrint('💼  <span class="term-cyan">LinkedIn:</span> linkedin.com/in/yakuperoglu', 'term-echo');
                 break;
@@ -120,7 +133,7 @@
 
             case 'open': {
                 const target = args[0];
-                const validWindows = ['about', 'projects', 'certificates', 'contact', 'terminal', 'games', 'game-snake', 'game-tictactoe', 'game-memory', 'stats', 'music', 'settings', 'gallery', 'explorer', 'notepad', 'calculator'];
+                const validWindows = ['about', 'projects', 'certificates', 'contact', 'terminal', 'games', 'my-games', 'game-snake', 'game-tictactoe', 'game-memory', 'stats', 'music', 'settings', 'gallery', 'explorer', 'notepad', 'calculator'];
                 if (!target) {
                     termPrint('Usage: open &lt;window&gt;', 'term-error');
                     termPrint('Available: ' + validWindows.join(', '), 'term-system');

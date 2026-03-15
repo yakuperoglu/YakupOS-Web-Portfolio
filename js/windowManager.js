@@ -169,6 +169,7 @@
         calendar: '📅 Calendar.exe',
         taskmanager: '📋 Task Manager',
         browser: '🌐 Browser.exe',
+        'my-games': '🕹️ Benim Oyunlarım',
     };
 
     /**

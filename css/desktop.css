@@ -55,6 +55,12 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    #grid-bg::before {
+        animation: none;
+    }
+}
+
 /* ═══════════════════════════════════════════════
    DESKTOP ICONS
    ═══════════════════════════════════════════════ */
@@ -63,7 +69,8 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    /* Biraz yukarı alalım ki en alttaki ikonların yazıları taskbar'a yapışmasın */
+    bottom: 40px;
     z-index: 1;
     pointer-events: none;
 }
@@ -113,12 +120,12 @@
     display: grid;
     place-items: center;
     color: var(--accent);
-    filter: drop-shadow(0 0 8px var(--accent-glow));
+    filter: drop-shadow(0 0 4px var(--accent-glow));
     transition: filter 0.3s;
 }
 
 .desktop-icon:hover .icon-graphic {
-    filter: drop-shadow(0 0 16px var(--accent-glow));
+    filter: drop-shadow(0 0 10px var(--accent-glow));
 }
 
 .icon-graphic svg {

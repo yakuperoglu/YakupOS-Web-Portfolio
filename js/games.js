@@ -6,15 +6,13 @@
     'use strict';
     const OS = window.YakupOS;
 
-    // Folder item clicks open individual game windows
-    document.querySelectorAll('.folder-item').forEach(item => {
+    document.querySelectorAll('.folder-item[data-window]').forEach(item => {
         item.addEventListener('dblclick', () => {
             OS.openWindow(item.dataset.window);
         });
         item.addEventListener('click', () => {
             document.querySelectorAll('.folder-item').forEach(fi => fi.style.background = '');
             item.style.background = 'rgba(124,92,252,0.12)';
-            // On mobile, open immediately on single click since dblclick is hard
             if (window.YakupOS.isMobile) {
                 OS.openWindow(item.dataset.window);
             }

@@ -79,6 +79,7 @@
             home: [
                 { name: 'Documents', type: 'folder', icon: '📄' },
                 { name: 'Games', type: 'folder', icon: '🎮' },
+                { name: 'My Games', type: 'folder', icon: '🕹️' },
                 { name: 'System', type: 'folder', icon: '⚙️' },
                 { name: 'readme.txt', type: 'file', icon: '📝' }
             ],
@@ -92,6 +93,14 @@
                 { name: 'TicTacToe.exe', type: 'app', icon: '❌', appTarget: 'game-tictactoe' },
                 { name: 'Memory.exe', type: 'app', icon: '🧠', appTarget: 'game-memory' },
                 { name: 'Minesweeper.exe', type: 'app', icon: '💣', appTarget: 'game-minesweeper' }
+            ],
+            'my games': [
+                { name: 'Secrets of Masks', type: 'link', icon: '🎭', url: 'https://portacom.itch.io/secrets-of-masks' },
+                { name: 'Echoes of Delirium', type: 'link', icon: '👻', url: 'https://portacom.itch.io/echoes-of-delirium' },
+                { name: 'Correct Color', type: 'link', icon: '🎨', url: 'https://portacom.itch.io/correct-color' },
+                { name: 'HiLight', type: 'link', icon: '💡', url: 'https://portacom.itch.io/hilight' },
+                { name: 'Red Dot Maze', type: 'link', icon: '🔴', url: 'https://portacom.itch.io/red-dot-maze' },
+                { name: 'Red And Orange', type: 'link', icon: '🟠', url: 'https://portacom.itch.io/red-and-orange' }
             ],
             system: [
                 { name: 'Settings.sys', type: 'app', icon: '⚙️', appTarget: 'settings' },
@@ -144,6 +153,8 @@
                 }
             } else if (item.type === 'app' && item.appTarget) {
                 OS.openWindow(item.appTarget);
+            } else if (item.type === 'link' && item.url) {
+                window.open(item.url, '_blank', 'noopener');
             } else if (item.type === 'file') {
                 if (item.name === 'readme.txt') {
                     const npTextarea = document.getElementById('notepad-textarea');
