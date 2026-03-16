@@ -136,12 +136,17 @@
 
     // Set initial grid positions
     (function initIconGrid() {
-        const saved = loadIconGridPositions();
+        // Always start from the HTML configuration (data-row / data-col).
+        // Saved positions are ignored so that the desktop layout is consistent
+        // with the designed default every time the site loads.
+        const saved = null;
         const occupied = {};
         const iconList = Array.from(OS.desktopIcons);
         const { rows } = getGridDimensions();
 
-        // Default column layout: stack vertically, then wrap to next column
+        // Default column layout: stack vertically, then wrap to next column.
+        // If an icon has explicit data-row / data-col attributes in HTML,
+        // use those as the initial configuration on first load.
         let defaultIdx = 0;
 
         iconList.forEach(icon => {
@@ -151,6 +156,9 @@
             if (saved && saved[id] != null) {
                 row = saved[id].row;
                 col = saved[id].col;
+            } else if (icon.dataset.row != null && icon.dataset.col != null) {
+                row = parseInt(icon.dataset.row, 10) || 0;
+                col = parseInt(icon.dataset.col, 10) || 0;
             } else {
                 row = defaultIdx % rows;
                 col = Math.floor(defaultIdx / rows);
