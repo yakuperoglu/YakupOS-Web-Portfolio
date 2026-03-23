@@ -283,6 +283,22 @@
         iconDrag.el = null;
     }
 
+    // Attach standard click for mobile and keyboard support
+    OS.desktopIcons.forEach(icon => {
+        icon.addEventListener('click', e => {
+            // Only open if we didn't just drag it
+            if (!iconDrag.moved && !iconDrag.active) {
+                OS.openWindow(icon.dataset.window);
+            }
+        });
+        icon.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                OS.openWindow(icon.dataset.window);
+            }
+        });
+    });
+
     // Attach icon drag events
     const iconsContainer = document.getElementById('desktop-icons');
     iconsContainer.addEventListener('mousedown', onIconDragStart);
@@ -307,13 +323,32 @@
 
     OS.sortIcons = sortIcons;
 
-    // Keyboard support
-    OS.desktopIcons.forEach(icon => {
-        icon.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                OS.openWindow(icon.dataset.window);
-            }
-        });
+    // Window resize handler for responsive grid
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        if (OS.isMobile) return;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const { cols, rows } = getGridDimensions();
+            const occupied = {};
+            
+            OS.desktopIcons.forEach(icon => {
+                // Determine current logical cell
+                const cell = pixelToCell(parseInt(icon.style.top) || 0, parseInt(icon.style.left) || 0);
+                
+                // Clamp cell to valid rows/cols bounds to prevent falling off screen
+                let r = Math.max(0, Math.min(cell.row, rows - 1));
+                let c = Math.max(0, Math.min(cell.col, cols - 1));
+                
+                if (occupied[r + ',' + c]) {
+                    const freeCell = findNearestFreeCell(r, c, occupied);
+                    r = freeCell.row;
+                    c = freeCell.col;
+                }
+                occupied[r + ',' + c] = icon;
+                placeIconAtCell(icon, r, c, true);
+            });
+            saveIconPositions();
+        }, 200);
     });
 })();
