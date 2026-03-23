@@ -117,11 +117,14 @@
         const positions = {};
         OS.desktopIcons.forEach(icon => {
             const id = icon.dataset.window;
-            const cell = pixelToCell(
-                parseInt(icon.style.top) || 0,
-                parseInt(icon.style.left) || 0
-            );
-            positions[id] = { row: cell.row, col: cell.col };
+            let r = parseInt(icon.dataset.desiredRow, 10);
+            let c = parseInt(icon.dataset.desiredCol, 10);
+            if (isNaN(r)) {
+                const cell = pixelToCell(parseInt(icon.style.top) || 0, parseInt(icon.style.left) || 0);
+                r = cell.row;
+                c = cell.col;
+            }
+            positions[id] = { row: r, col: c };
         });
         try { localStorage.setItem('yakupos-icon-grid', JSON.stringify(positions)); } catch { }
     }
@@ -173,6 +176,9 @@
                 col = free.col;
             }
             occupied[row + ',' + col] = icon;
+            // Save natural position so window resize can expand back
+            icon.dataset.desiredRow = row;
+            icon.dataset.desiredCol = col;
             placeIconAtCell(icon, row, col, false);
         });
     })();
@@ -272,6 +278,10 @@
             const occupied = getOccupiedCells(iconDrag.el);
             const freeCell = findNearestFreeCell(targetCell.row, targetCell.col, occupied);
 
+            // Save new intended position manually adjusted by user
+            iconDrag.el.dataset.desiredRow = freeCell.row;
+            iconDrag.el.dataset.desiredCol = freeCell.col;
+
             placeIconAtCell(iconDrag.el, freeCell.row, freeCell.col, true);
             saveIconPositions();
         } else if (iconDrag.el) {
@@ -316,6 +326,8 @@
             const row = idx % rows;
             const col = Math.floor(idx / rows);
             occupied[row + ',' + col] = icon;
+            icon.dataset.desiredRow = row;
+            icon.dataset.desiredCol = col;
             placeIconAtCell(icon, row, col, true);
         });
         saveIconPositions();
@@ -333,12 +345,20 @@
             const occupied = {};
             
             OS.desktopIcons.forEach(icon => {
-                // Determine current logical cell
-                const cell = pixelToCell(parseInt(icon.style.top) || 0, parseInt(icon.style.left) || 0);
+                // Determine logical cell using natural desired row/col first
+                let desiredR = parseInt(icon.dataset.desiredRow, 10);
+                let desiredC = parseInt(icon.dataset.desiredCol, 10);
+                
+                // Fallback to current position if somehow invalid
+                if (isNaN(desiredR) || isNaN(desiredC)) {
+                    const cell = pixelToCell(parseInt(icon.style.top) || 0, parseInt(icon.style.left) || 0);
+                    desiredR = cell.row;
+                    desiredC = cell.col;
+                }
                 
                 // Clamp cell to valid rows/cols bounds to prevent falling off screen
-                let r = Math.max(0, Math.min(cell.row, rows - 1));
-                let c = Math.max(0, Math.min(cell.col, cols - 1));
+                let r = Math.max(0, Math.min(desiredR, rows - 1));
+                let c = Math.max(0, Math.min(desiredC, cols - 1));
                 
                 if (occupied[r + ',' + c]) {
                     const freeCell = findNearestFreeCell(r, c, occupied);

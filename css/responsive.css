@@ -46,16 +46,18 @@
    ═══════════════════════════════════════════════ */
 @media (max-width: 768px) {
     body {
-        overflow-y: auto;
-        height: auto;
+        overflow: hidden !important;
+        height: 100% !important;
+        width: 100% !important;
     }
 
     #desktop {
-        height: auto;
-        min-height: 100vh;
-        overflow: visible;
+        height: calc(100vh - var(--taskbar-h)) !important;
+        min-height: unset !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
         padding: 12px 10px;
-        padding-bottom: calc(var(--taskbar-h) + 20px);
     }
 
     #desktop-icons {
