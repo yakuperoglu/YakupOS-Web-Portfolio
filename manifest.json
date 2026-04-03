@@ -1,7 +1,7 @@
-{
+﻿{
   "name": "Yakup Eroğlu Portfolio",
   "short_name": "YakupOS",
-  "description": "Interactive OS-style developer portfolio by Yakup Eroğlu — Full Stack Developer & Creative Technologist from Turkey.",
+  "description": "Interactive OS-style developer portfolio by Yakup Eroğlu — Software Developer & Creative Technologist from Turkey.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a1a",

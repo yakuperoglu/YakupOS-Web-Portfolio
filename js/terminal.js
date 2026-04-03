@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════
    INTERACTIVE TERMINAL
    ═══════════════════════════════════════════════ */
 
@@ -59,7 +59,7 @@
 
             case 'whoami':
                 termPrint('<span class="term-accent">Yakup Eroğlu</span>', 'term-echo');
-                termPrint('Full-Stack Developer · Creative Technologist', 'term-echo');
+                termPrint('Software Developer · Creative Technologist', 'term-echo');
                 termPrint('Building beautiful, performant web experiences.', 'term-system');
                 break;
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -14,8 +14,8 @@
     <!-- OG image for rich results -->
     <image:image>
       <image:loc>https://yakuperoglu.com/og-image.png</image:loc>
-      <image:title>Yakup Eroğlu — Full Stack Developer Portfolio</image:title>
-      <image:caption>Interactive OS-style portfolio of Yakup Eroğlu, Full Stack Developer and Creative Technologist from Turkey.</image:caption>
+      <image:title>Yakup Eroğlu — Software Developer Portfolio</image:title>
+      <image:caption>Interactive OS-style portfolio of Yakup Eroğlu, Software Developer and Creative Technologist from Turkey.</image:caption>
     </image:image>
   </url>
 </urlset>
