@@ -166,6 +166,76 @@
     <link rel="stylesheet" href="css/contextmenu.css" />
     <link rel="stylesheet" href="css/toast.css" />
     <link rel="stylesheet" href="css/responsive.css?v=2" />
+
+    <!-- JSON-LD: Projects Portfolio -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Yakup Eroğlu Portfolio Projects",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "url": "https://yaparmisin.com.tr",
+            "name": "Yaparmısın"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "url": "https://www.npmjs.com/package/nova-ai-cli",
+            "name": "Nova AI CLI"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SoftwareApplication",
+            "url": "https://swaps.com.tr",
+            "name": "SwapS"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SoftwareApplication",
+            "url": "https://smart-campus-platform-frontend.vercel.app/",
+            "name": "Smart Campus Platform"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Modular JS (Deferred for Core Web Vitals) -->
+    <script defer src="js/core.js"></script>
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/windowManager.js"></script>
+    <script defer src="js/dragSystem.js"></script>
+    <script defer src="js/iconGrid.js?v=2"></script>
+    <script defer src="js/toast.js"></script>
+    <script defer src="js/lockscreen.js"></script>
+    <script defer src="js/ui.js"></script>
+    <script defer src="js/terminal.js"></script>
+    <script defer src="js/games.js"></script>
+    <script defer src="js/minesweeper.js"></script>
+    <script defer src="js/stats.js"></script>
+    <script defer src="js/music.js"></script>
+    <script defer src="js/settings.js"></script>
+    <script defer src="js/gallery.js"></script>
+    <script defer src="js/apps.js"></script>
+    <script defer src="js/paint.js"></script>
+    <script defer src="js/calendar.js"></script>
+    <script defer src="js/taskmanager.js"></script>
+    <script defer src="js/browser.js"></script>
+    <script defer src="js/contextmenu.js"></script>
 </head>
 
 <body>
@@ -175,7 +245,8 @@
        hidden visually via inline style so it does not affect UI
   ═══════════════════════════════════════════════ -->
     <noscript>
-        <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+        <div style="padding: 20px; background: #0a0a1a; color: #ffffff; font-family: 'Inter', sans-serif;">
+            <div style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
             <h1>Yakup Eroğlu — Full Stack Developer &amp; Creative Technologist</h1>
             <p>Yakup Eroğlu is a Full Stack Developer and Creative Technologist from Turkey, specialized in React,
                 Next.js, Node.js, TypeScript, Python, C#, and Unity.</p>
@@ -2012,28 +2083,6 @@ $ cat skills.json
   ═══════════════════════════════════════════════ -->
     <div id="toast-container" class="toast-container"></div>
 
-    <!-- Modular JS (core must load first) -->
-    <script src="js/core.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/windowManager.js"></script>
-    <script src="js/dragSystem.js"></script>
-    <script src="js/iconGrid.js?v=2"></script>
-    <script src="js/toast.js"></script>
-    <script src="js/lockscreen.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/terminal.js"></script>
-    <script src="js/games.js"></script>
-    <script src="js/minesweeper.js"></script>
-    <script src="js/stats.js"></script>
-    <script src="js/music.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="js/apps.js"></script>
-    <script src="js/paint.js"></script>
-    <script src="js/calendar.js"></script>
-    <script src="js/taskmanager.js"></script>
-    <script src="js/browser.js"></script>
-    <script src="js/contextmenu.js"></script>
+    <!-- JavaScript is now loaded with defer in the <head> for better SEO and FCP -->
 </body>
-
 </html>
