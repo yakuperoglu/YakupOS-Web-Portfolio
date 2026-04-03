@@ -1,70 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yakup Eroğlu | Full Stack Developer & Creative Technologist Portfolio</title>
+    <title>Yakup Eroğlu | Full Stack Developer &amp; Creative Technologist</title>
     <meta name="description"
-        content="Interactive portfolio of Yakup Eroğlu. Full Stack Developer, Software Engineer, and Creative Technologist from Turkey. Specialized in React, Node.js, Next.js, and Unity." />
-    <meta name="keywords" content="Yakup Eroğlu, Full Stack Developer, Software Engineer, Frontend Developer, Backend Developer, React, Node.js, Next.js, Game Developer, Unity, Turkey, Portfolio" />
+        content="Yakup Eroğlu — Full Stack Developer and Creative Technologist from Turkey. Specialized in React, Next.js, Node.js, TypeScript, and Unity. Explore my interactive OS-style portfolio." />
+    <meta name="keywords" content="Yakup Eroğlu, yakup eroglu, Full Stack Developer, Software Engineer, Frontend Developer, Backend Developer, React Developer Turkey, Node.js, Next.js, TypeScript, Game Developer, Unity, Turkey, Portfolio, Yazılım Geliştirici" />
     <meta name="author" content="Yakup Eroğlu" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="TR" />
+    <meta name="geo.country" content="Turkey" />
+    <meta name="language" content="English, Turkish" />
 
-    <!-- JSON-LD Structured Data for SEO -->
+    <!-- JSON-LD: Person -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://yakuperoglu.com/#person",
       "name": "Yakup Eroğlu",
+      "alternateName": "yakuperoglu",
       "jobTitle": "Full Stack Developer & Creative Technologist",
+      "description": "Full Stack Developer and Creative Technologist from Turkey, specialized in React, Next.js, Node.js, TypeScript, Python, C# and Unity.",
       "url": "https://yakuperoglu.com/",
-      "image": "https://yakuperoglu.com/og-image.png",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://yakuperoglu.com/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "email": "yakup.erogl@gmail.com",
+      "nationality": { "@type": "Country", "name": "Turkey" },
       "sameAs": [
         "https://github.com/yakuperoglu",
-        "https://www.linkedin.com/in/yakuperogl/"
+        "https://www.linkedin.com/in/yakuperogl/",
+        "https://www.npmjs.com/package/nova-ai-cli",
+        "https://portacom.itch.io/"
       ],
       "knowsAbout": [
-        "Full Stack Development",
-        "Web Development",
-        "Software Engineering",
-        "React",
-        "Node.js",
-        "TypeScript",
-        "Next.js",
-        "Python",
-        "C#",
-        "Unity"
-      ]
+        "Full Stack Development", "Web Development", "Software Engineering",
+        "React", "Next.js", "Node.js", "TypeScript", "JavaScript",
+        "Python", "C#", "Unity", "Docker", "PostgreSQL", "MongoDB"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Full Stack Developer",
+        "occupationLocation": { "@type": "Country", "name": "Turkey" }
+      }
     }
     </script>
 
-    <!-- Favicon -->
+    <!-- JSON-LD: ProfilePage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://yakuperoglu.com/#profilepage",
+      "name": "Yakup Eroğlu — Full Stack Developer Portfolio",
+      "url": "https://yakuperoglu.com/",
+      "description": "Interactive OS-style portfolio of Yakup Eroğlu, Full Stack Developer and Creative Technologist from Turkey.",
+      "mainEntity": { "@id": "https://yakuperoglu.com/#person" },
+      "dateModified": "2026-04-03"
+    }
+    </script>
+
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://yakuperoglu.com/#website",
+      "name": "Yakup Eroğlu Portfolio",
+      "alternateName": "YakupOS",
+      "url": "https://yakuperoglu.com/",
+      "description": "Interactive OS-style developer portfolio by Yakup Eroğlu — Full Stack Developer & Creative Technologist",
+      "author": { "@id": "https://yakuperoglu.com/#person" },
+      "inLanguage": ["en", "tr"]
+    }
+    </script>
+
+    <!-- Favicon & PWA -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="YakupOS" />
 
     <!-- Open Graph / Social -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Yakup Eroğlu | Full Stack Developer & Creative Technologist" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Yakup Eroğlu Portfolio" />
+    <meta property="og:title" content="Yakup Eroğlu | Full Stack Developer &amp; Creative Technologist" />
     <meta property="og:description"
-        content="Interactive portfolio of Yakup Eroğlu. Full Stack Developer and Creative Technologist specialized in React, Node.js, and Unity." />
+        content="Yakup Eroğlu — Full Stack Developer from Turkey. Explore an interactive OS-style portfolio showcasing React, Node.js, Unity projects and more." />
     <meta property="og:url" content="https://yakuperoglu.com/" />
     <meta property="og:image" content="https://yakuperoglu.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Yakup Eroğlu — Full Stack Developer Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
+    <meta property="profile:first_name" content="Yakup" />
+    <meta property="profile:last_name" content="Eroğlu" />
+    <meta property="profile:username" content="yakuperoglu" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Yakup Eroğlu | Full Stack Developer & Creative Technologist" />
+    <meta name="twitter:site" content="@yakuperoglu" />
+    <meta name="twitter:creator" content="@yakuperoglu" />
+    <meta name="twitter:title" content="Yakup Eroğlu | Full Stack Developer &amp; Creative Technologist" />
     <meta name="twitter:description"
-        content="Interactive portfolio of Yakup Eroğlu. Full Stack Developer and Creative Technologist specialized in React, Node.js, and Unity." />
+        content="Yakup Eroğlu — Full Stack Developer from Turkey. Explore an interactive OS-style portfolio showcasing React, Node.js, Unity projects." />
     <meta name="twitter:image" content="https://yakuperoglu.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Yakup Eroğlu Portfolio" />
 
-    <!-- Canonical -->
+    <!-- Canonical & Hreflang -->
     <link rel="canonical" href="https://yakuperoglu.com/" />
+    <link rel="alternate" hreflang="en" href="https://yakuperoglu.com/" />
+    <link rel="alternate" hreflang="tr" href="https://yakuperoglu.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://yakuperoglu.com/" />
 
     <!-- Theme color (mobile browser bar) -->
     <meta name="theme-color" content="#0a0a1a" />
 
-    <!-- Google Fonts: Inter (UI) + JetBrains Mono (code) -->
+    <!-- Preconnect & DNS Prefetch (Core Web Vitals boost) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="preload" href="css/variables.css" as="style" />
+    <link rel="preload" href="css/desktop.css" as="style" />
+
+    <!-- Google Fonts: Inter (UI) + JetBrains Mono (code) -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet" />
@@ -102,6 +169,50 @@
 </head>
 
 <body>
+
+    <!-- ═══════════════════════════════════════════════
+       NOSCRIPT SEO FALLBACK — visible to Googlebot when JS is disabled
+       hidden visually via inline style so it does not affect UI
+  ═══════════════════════════════════════════════ -->
+    <noscript>
+        <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+            <h1>Yakup Eroğlu — Full Stack Developer &amp; Creative Technologist</h1>
+            <p>Yakup Eroğlu is a Full Stack Developer and Creative Technologist from Turkey, specialized in React,
+                Next.js, Node.js, TypeScript, Python, C#, and Unity.</p>
+            <h2>About</h2>
+            <p>Passionate developer who builds beautiful, performant web experiences. Blending clean code with creative
+                design to craft applications that feel alive.</p>
+            <h2>Tech Stack</h2>
+            <ul>
+                <li>JavaScript &amp; TypeScript</li>
+                <li>React &amp; Next.js</li>
+                <li>Node.js &amp; Express</li>
+                <li>Python</li>
+                <li>C# &amp; Unity</li>
+                <li>PostgreSQL &amp; MongoDB</li>
+                <li>Docker &amp; Git</li>
+            </ul>
+            <h2>Projects</h2>
+            <ul>
+                <li><a href="https://yaparmisin.com.tr">Yaparmısın</a> — Live betting challenge platform (React,
+                    Node.js, Full-Stack)</li>
+                <li><a href="https://www.npmjs.com/package/nova-ai-cli">Nova AI CLI</a> — AI-powered terminal
+                    assistant (TypeScript, Node.js, Gemini AI)</li>
+                <li><a href="https://swaps.com.tr">SwapS</a> — Skill swap platform (React, Express, PostgreSQL)</li>
+                <li><a href="https://smart-campus-platform-frontend.vercel.app/">Smart Campus Platform</a> —
+                    School management system (Next.js, TypeScript)</li>
+                <li>Turkcell CityPulse — Smart city platform (Next.js, Spring Boot, PostgreSQL)</li>
+                <li><a href="https://portacom.itch.io/secrets-of-masks">Secrets of Masks</a> — 3D game (Unity, C#)</li>
+            </ul>
+            <h2>Contact</h2>
+            <ul>
+                <li>Email: <a href="mailto:yakup.erogl@gmail.com">yakup.erogl@gmail.com</a></li>
+                <li>GitHub: <a href="https://github.com/yakuperoglu">github.com/yakuperoglu</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/yakuperogl/">linkedin.com/in/yakuperogl</a></li>
+                <li>Portfolio: <a href="https://yakuperoglu.com">yakuperoglu.com</a></li>
+            </ul>
+        </div>
+    </noscript>
 
     <!-- ═══════════════════════════════════════════════
        LOCK SCREEN
