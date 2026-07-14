@@ -61,6 +61,8 @@
         });
 
         updateCVButton(lang);
+
+        document.dispatchEvent(new CustomEvent('yakupos:langchange', { detail: { lang: lang } }));
     }
 
     var initialLang = getInitialLang();

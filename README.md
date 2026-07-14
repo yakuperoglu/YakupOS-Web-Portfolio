@@ -29,7 +29,7 @@
 
 ### Integrated Applications
 - **Terminal.exe:** A custom command-line interface that responds to commands (`help`, `ls`, `whoami`, `clear`).
-- **Browser.exe:** Faux web browser that renders the projects, about section, and blog within an inner viewport.
+- **Browser.exe:** Faux web browser that renders the projects, about section, and developer notes within an inner viewport.
 - **Paint.exe:** A fully functioning drawing tool utilizing the HTML5 `<canvas>` element (brush, eraser, shapes, custom colors).
 - **Music.mp3:** Inner music player equipped with a visualizer, timeline, and playlist.
 - **Calculator.exe:** A fully functional desktop calculator.
@@ -88,6 +88,7 @@ Since YakupOS is pure Vanilla JS, there is no build step or node package require
 │   ├── ui.js           # Start menu and taskbar behaviors
 │   └── ...             # Custom scripts for each OS app
 ├── index.html          # Main architecture and entry point
+├── LICENSE             # MIT License
 ├── robots.txt          # Web crawler configuration
 └── sitemap.xml         # XML Sitemap for indexing
 ```

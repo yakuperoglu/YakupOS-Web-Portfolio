@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /tmp_test.js
 
 # Googlebot specific
 User-agent: Googlebot

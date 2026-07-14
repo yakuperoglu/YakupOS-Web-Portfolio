@@ -70,13 +70,24 @@
         item.addEventListener('click', () => openWindowFromMenu(item.dataset.window));
     });
 
+    function updateToggleAppsLabel() {
+        if (!toggleAppsBtn) return;
+        const lang = (window.YakupOS && window.YakupOS.currentLang) || 'en';
+        const attr = allAppsExpanded
+            ? (lang === 'tr' ? 'data-i18n-expanded-tr' : 'data-i18n-expanded-en')
+            : (lang === 'tr' ? 'data-i18n-tr' : 'data-i18n-en');
+        const text = toggleAppsBtn.getAttribute(attr);
+        if (text) toggleAppsBtn.textContent = text;
+    }
+
     // Toggle All Apps
     if (toggleAppsBtn) {
         toggleAppsBtn.addEventListener('click', () => {
             allAppsExpanded = !allAppsExpanded;
             allAppsList.style.display = allAppsExpanded ? 'block' : 'none';
-            toggleAppsBtn.textContent = allAppsExpanded ? '‹ Hide' : 'Show all ›';
+            updateToggleAppsLabel();
         });
+        document.addEventListener('yakupos:langchange', updateToggleAppsLabel);
     }
 
     // Search functionality

@@ -31,7 +31,7 @@
         home: 'yakupos://home',
         about: 'yakupos://about-me',
         portfolio: 'yakupos://portfolio',
-        blog: 'yakupos://blog',
+        blog: 'yakupos://notes',
     };
 
     /* ── Domain Blocklist (sites that block iframe embedding) ── */

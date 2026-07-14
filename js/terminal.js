@@ -45,6 +45,7 @@
             case 'help':
                 termPrint('Available commands:', 'term-system');
                 termPrint('  <span class="term-cmd">whoami</span>      ─  Who am I?', 'term-echo');
+                termPrint('  <span class="term-cmd">ls</span>          ─  List desktop apps', 'term-echo');
                 termPrint('  <span class="term-cmd">skills</span>      ─  My tech stack', 'term-echo');
                 termPrint('  <span class="term-cmd">projects</span>    ─  List my projects', 'term-echo');
                 termPrint('  <span class="term-cmd">contact</span>     ─  How to reach me', 'term-echo');
@@ -96,9 +97,20 @@
                 break;
 
             case 'contact':
-                termPrint('📧  <span class="term-cyan">Email:</span>    yakuperoglu@outlook.com', 'term-echo');
+                termPrint('📧  <span class="term-cyan">Email:</span>    yakup.erogl@gmail.com', 'term-echo');
                 termPrint('🐙  <span class="term-cyan">GitHub:</span>   github.com/yakuperoglu', 'term-echo');
-                termPrint('💼  <span class="term-cyan">LinkedIn:</span> linkedin.com/in/yakuperoglu', 'term-echo');
+                termPrint('💼  <span class="term-cyan">LinkedIn:</span> linkedin.com/in/yakuperogl', 'term-echo');
+                break;
+
+            case 'ls':
+            case 'dir':
+                termPrint('<span class="term-cyan">Desktop/</span>', 'term-system');
+                termPrint('  about.exe        projects/        certificates/', 'term-echo');
+                termPrint('  contact.txt      terminal.exe    browser.exe', 'term-echo');
+                termPrint('  games/           stats           music.mp3', 'term-echo');
+                termPrint('  gallery          explorer.exe    notepad.txt', 'term-echo');
+                termPrint('  calculator.exe   settings.sys    paint.exe', 'term-echo');
+                termPrint('  calendar.exe     taskmanager', 'term-echo');
                 break;
 
             case 'education':
