@@ -18,4 +18,10 @@
       <image:caption>Interactive OS-style portfolio of Yakup Eroğlu, Software Developer and Creative Technologist from Turkey.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://yakuperoglu.com/porta/10tl/privacy-policy.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
