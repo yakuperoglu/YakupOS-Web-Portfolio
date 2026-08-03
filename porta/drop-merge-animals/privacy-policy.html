@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drop Merge: Animals — Gizlilik Politikası | Porta</title>
-    <meta name="description" content="Drop Merge: Animals oyunu gizlilik politikası. Porta tarafından geliştirilen bu oyunda kişisel veri toplanmaz; yalnızca global skor tablosu için en yüksek puanlar kaydedilir." />
+    <meta name="description" content="Drop Merge: Animals oyunu gizlilik politikası. Google hesabı, reklam kimliği (AAID), Firebase'de saklanan kullanıcı adı ve skor bilgileri açıklanır." />
     <meta name="robots" content="index, follow" />
     <style>
         :root {
@@ -90,7 +90,7 @@
 
         <section lang="tr">
             <div class="card">
-                <p><strong>Özet:</strong> Drop Merge: Animals kullanıcıdan ad, e-posta veya benzeri kişisel veri toplamaz. Oyun yalnızca global skor tablosu için en yüksek puanınızı (kolay, orta ve zor seviyeler için ayrı ayrı) kaydeder. Oyunda reklamlar gösterilir; reklamları kaldırma ve coin satın alma gibi uygulama içi satın almalar mevcuttur.</p>
+                <p><strong>Özet:</strong> Drop Merge: Animals; global skor tablosu için Google hesabı bilgisi, Firebase'de saklanan kullanıcı adı ve skor verilerini işler. Reklam gösterimi için Android Reklam Kimliği (AAID) kullanılabilir. Oyunda reklamları kaldırma ve coin satın alma gibi uygulama içi satın almalar mevcuttur.</p>
             </div>
 
             <h2>1. Giriş</h2>
@@ -99,83 +99,107 @@
                 için geçerlidir. Oyunu indirip oynayarak bu politikayı kabul etmiş sayılırsınız.
             </p>
 
-            <h2>2. Toplanmayan Veriler</h2>
-            <p>Drop Merge: Animals aşağıdaki kişisel verileri <strong>toplamaz</strong>:</p>
+            <h2>2. Toplanan Veriler</h2>
+            <p>Drop Merge: Animals aşağıdaki verileri toplayabilir ve işleyebilir:</p>
             <ul>
-                <li>Ad, soyad, e-posta veya telefon numarası</li>
+                <li><strong>Google hesabı bilgisi</strong> — global skor tablosuna katılmak için Google ile giriş yapmanız istenebilir. Bu kapsamda Google tarafından sağlanan hesap tanımlayıcısı ve görünen ad gibi bilgiler alınabilir.</li>
+                <li><strong>Kullanıcı adı</strong> — global en iyiler ekranında gösterilmek üzere seçtiğiniz veya Google hesabınızdan gelen kullanıcı adı.</li>
+                <li><strong>Skor verileri</strong> — her zorluk seviyesi (<strong>kolay</strong>, <strong>orta</strong>, <strong>zor</strong>) için ulaştığınız en yüksek puan.</li>
+                <li><strong>Reklam kimliği (AAID)</strong> — Android cihazlarda reklam gösterimi ve ölçümü için Google Advertising ID (AAID) kullanılabilir.</li>
+            </ul>
+            <p>
+                Bu veriler, global skor tablosu işlevselliği ve reklam hizmetlerinin sunulması amacıyla
+                <strong>Firebase</strong> (Google) altyapısında saklanır veya işlenir.
+            </p>
+
+            <h2>3. Toplanmayan Veriler</h2>
+            <p>Drop Merge: Animals aşağıdaki verileri <strong>doğrudan toplamaz</strong>:</p>
+            <ul>
+                <li>Telefon numarası veya fiziksel adres</li>
                 <li>Konum bilgisi</li>
-                <li>Hesap oluşturma veya giriş yapma (oyun hesap gerektirmez)</li>
                 <li>Ödeme veya banka kartı bilgileri (satın almalar mağaza üzerinden işlenir)</li>
             </ul>
 
-            <h2>3. Kaydedilen Oyun Verileri (Global Skor Tablosu)</h2>
+            <h2>4. Firebase ve Global Skor Tablosu</h2>
             <p>
-                Global en iyiler ekranında sıralama gösterebilmek için oyun, her zorluk seviyesi
-                (<strong>kolay</strong>, <strong>orta</strong>, <strong>zor</strong>) için ulaştığınız
-                <strong>en yüksek puanı</strong> sunucumuza iletir ve saklar.
+                Global en iyiler ekranında sıralama gösterebilmek için oyun, Firebase üzerinde
+                aşağıdaki bilgileri saklar:
             </p>
             <ul>
-                <li>Bu veriler kimliğinizi belirlemez; yalnızca sayısal skor değerleridir.</li>
-                <li>Her zorluk seviyesi için ayrı bir en iyi skor tutulur.</li>
-                <li>Skor tablosunda yalnızca en iyi sonucunuz gösterilir; kişisel profil veya iletişim bilgisi oluşturulmaz.</li>
+                <li>Google hesabınıza bağlı tanımlayıcı</li>
+                <li>Global tabloda görünen <strong>kullanıcı adı</strong></li>
+                <li>Her zorluk seviyesi için ayrı tutulan <strong>en yüksek skor</strong> (kolay, orta, zor)</li>
             </ul>
-
-            <h2>4. Reklamlar</h2>
             <p>
-                Oyun ücretsiz sürümünde reklamlar gösterilebilir. Reklamlar, üçüncü taraf reklam
-                ağları aracılığıyla sunulur. Bu ağlar, reklam gösterimi ve ölçümü için cihaz tanımlayıcıları
-                (ör. reklam kimliği) gibi verileri kendi gizlilik politikalarına göre işleyebilir.
+                Skor verileri yalnızca sıralama ve en iyi sonuçların gösterilmesi amacıyla kullanılır.
+                Firebase veri işleme uygulamaları için
+                <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google Firebase Gizlilik</a>
+                sayfasına bakabilirsiniz.
+            </p>
+
+            <h2>5. Reklamlar ve Reklam Kimliği (AAID)</h2>
+            <p>
+                Oyun ücretsiz sürümünde Google AdMob aracılığıyla reklamlar gösterilebilir.
+                Reklam sunumu ve ölçümü için cihazınızdaki <strong>Android Reklam Kimliği (AAID)</strong>
+                kullanılabilir. AAID, kişisel olarak sizi doğrudan tanımlamaz; reklam ağları tarafından
+                ilgili reklamların gösterilmesi ve performans ölçümü için işlenir.
             </p>
             <p>
                 Reklamları kaldırmak için oyun içi satın alma seçeneği sunulmaktadır. Satın alma
                 sonrasında reklam gösterimi durdurulur.
             </p>
+            <p>
+                Google reklam gizliliği hakkında:
+                <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Reklam Teknolojileri</a>
+            </p>
 
-            <h2>5. Uygulama İçi Satın Almalar</h2>
+            <h2>6. Uygulama İçi Satın Almalar</h2>
             <p>Oyun aşağıdaki uygulama içi satın almaları sunar:</p>
             <ul>
                 <li><strong>Reklamları kaldırma</strong> — reklamsız oyun deneyimi</li>
                 <li><strong>Coin satın alma</strong> — oyun içi coin paketleri</li>
             </ul>
             <p>
-                Tüm ödemeler Google Play veya App Store gibi platform mağazaları üzerinden işlenir.
-                Porta olarak kredi kartı numarası, fatura adresi veya benzeri ödeme bilgilerine erişimimiz yoktur;
-                bu bilgiler yalnızca ilgili mağaza tarafından işlenir.
+                Tüm ödemeler Google Play üzerinden işlenir. Porta olarak kredi kartı numarası,
+                fatura adresi veya benzeri ödeme bilgilerine erişimimiz yoktur; bu bilgiler yalnızca
+                Google Play tarafından işlenir.
             </p>
 
-            <h2>6. Üçüncü Taraf Hizmetler</h2>
-            <p>Drop Merge: Animals aşağıdaki üçüncü taraf hizmetleri kullanabilir:</p>
+            <h2>7. Üçüncü Taraf Hizmetler</h2>
+            <p>Drop Merge: Animals aşağıdaki üçüncü taraf hizmetleri kullanır:</p>
             <ul>
-                <li><strong>Reklam ağları</strong> — reklam gösterimi (kendi gizlilik politikaları geçerlidir)</li>
-                <li><strong>Google Play / App Store</strong> — uygulama içi satın alma işlemleri</li>
-                <li><strong>Skor sunucusu</strong> — global skor tablosu için en yüksek puanların saklanması</li>
+                <li><strong>Google Sign-In</strong> — Google hesabı ile oturum açma</li>
+                <li><strong>Firebase</strong> — kullanıcı adı ve skor verilerinin saklanması</li>
+                <li><strong>Google AdMob</strong> — reklam gösterimi (AAID kullanımı dahil)</li>
+                <li><strong>Google Play</strong> — uygulama içi satın alma işlemleri</li>
             </ul>
             <p>
-                Analitik, sosyal medya entegrasyonu veya bulut kayıt hizmetleri gibi ek veri toplayan
-                SDK’lar bilinçli olarak kullanılmamaktadır.
+                Bu hizmetlerin her biri kendi gizlilik politikalarına tabidir. Google politikaları için:
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik Politikası</a>
             </p>
 
-            <h2>7. Çocukların Gizliliği</h2>
+            <h2>8. Çocukların Gizliliği</h2>
             <p>
-                Oyun bilerek çocuklardan kişisel veri toplamaz. Global skor tablosuna yalnızca
-                anonim sayısal puanlar kaydedilir. Reklam ağlarının kendi yaş ve veri politikaları
-                ilgili sağlayıcıların gizlilik sayfalarında açıklanır.
+                Oyun, çocuklardan bilerek gereksiz kişisel veri toplamaz. Google hesabı girişi ve
+                reklam hizmetleri Google'ın yaş ve veri politikalarına tabidir. Ebeveynler,
+                cihaz ayarlarından reklam kişiselleştirmesini veya reklam kimliğini sıfırlamayı
+                yönetebilir.
             </p>
 
-            <h2>8. Veri Güvenliği</h2>
+            <h2>9. Veri Güvenliği</h2>
             <p>
-                Kişisel veri toplanmadığından bu kapsamda saklanan bir veri bulunmamaktadır.
-                Global skor verileri yalnızca sıralama amacıyla tutulur ve kimlik bilgisiyle
-                eşleştirilmez.
+                Skor ve kullanıcı adı verileri Firebase altyapısında güvenli şekilde saklanır.
+                Verilere yalnızca global skor tablosu işlevselliği için erişilir. Ödeme bilgileri
+                tarafımızca işlenmez veya saklanmaz.
             </p>
 
-            <h2>9. Değişiklikler</h2>
+            <h2>10. Değişiklikler</h2>
             <p>
                 Bu politika güncellenebilir. Önemli değişiklikler olursa bu sayfadaki “son güncelleme”
                 tarihi revize edilir.
             </p>
 
-            <h2>10. İletişim</h2>
+            <h2>11. İletişim</h2>
             <p>
                 Sorularınız için: <a href="mailto:yakup.erogl@gmail.com">yakup.erogl@gmail.com</a><br />
                 Porta oyunları: <a href="https://portacom.itch.io/" target="_blank" rel="noopener">portacom.itch.io</a>
@@ -189,7 +213,7 @@
             <p class="meta">Developer: Porta · Last updated: August 3, 2026</p>
 
             <div class="card">
-                <p><strong>Summary:</strong> Drop Merge: Animals does not collect personal data such as name or email. The game only stores your highest score for the global leaderboard (separately for easy, medium, and hard levels). The game displays ads; in-app purchases are available to remove ads and buy coins.</p>
+                <p><strong>Summary:</strong> Drop Merge: Animals processes Google account information, username and score data stored in Firebase for the global leaderboard, and may use the Android Advertising ID (AAID) for ads. In-app purchases are available to remove ads and buy coins.</p>
             </div>
 
             <h2>1. Introduction</h2>
@@ -198,81 +222,102 @@
                 By downloading and playing the game, you agree to this policy.
             </p>
 
-            <h2>2. Data We Do Not Collect</h2>
-            <p>Drop Merge: Animals does <strong>not</strong> collect the following personal data:</p>
+            <h2>2. Data We Collect</h2>
+            <p>Drop Merge: Animals may collect and process the following data:</p>
             <ul>
-                <li>Name, email, or phone number</li>
+                <li><strong>Google account information</strong> — you may be asked to sign in with Google to join the global leaderboard. This may include account identifiers and display name provided by Google.</li>
+                <li><strong>Username</strong> — the name shown on the global leaderboard, either chosen by you or from your Google account.</li>
+                <li><strong>Score data</strong> — your highest score for each difficulty level (<strong>easy</strong>, <strong>medium</strong>, <strong>hard</strong>).</li>
+                <li><strong>Advertising ID (AAID)</strong> — on Android devices, the Google Advertising ID (AAID) may be used for ad delivery and measurement.</li>
+            </ul>
+            <p>
+                This data is stored or processed on <strong>Firebase</strong> (Google) infrastructure
+                to provide the global leaderboard and advertising services.
+            </p>
+
+            <h2>3. Data We Do Not Collect</h2>
+            <p>Drop Merge: Animals does <strong>not</strong> directly collect:</p>
+            <ul>
+                <li>Phone number or physical address</li>
                 <li>Location data</li>
-                <li>Account creation or sign-in (the game does not require an account)</li>
                 <li>Payment or credit card information (purchases are processed by the app store)</li>
             </ul>
 
-            <h2>3. Game Data We Store (Global Leaderboard)</h2>
+            <h2>4. Firebase and Global Leaderboard</h2>
             <p>
-                To display rankings on the global leaderboard, the game sends and stores your
-                <strong>highest score</strong> for each difficulty level
-                (<strong>easy</strong>, <strong>medium</strong>, <strong>hard</strong>) on our server.
+                To display rankings on the global leaderboard, the game stores the following on Firebase:
             </p>
             <ul>
-                <li>This data does not identify you; it consists of numeric score values only.</li>
-                <li>A separate best score is kept for each difficulty level.</li>
-                <li>Only your best result is shown on the leaderboard; no personal profile or contact information is created.</li>
+                <li>Identifier linked to your Google account</li>
+                <li><strong>Username</strong> shown on the global leaderboard</li>
+                <li><strong>Highest score</strong> for each difficulty level (easy, medium, hard)</li>
             </ul>
-
-            <h2>4. Advertising</h2>
             <p>
-                The free version of the game may display ads served through third-party ad networks.
-                These networks may process data such as device identifiers (e.g. advertising ID)
-                for ad delivery and measurement, according to their own privacy policies.
+                Score data is used solely for ranking and displaying best results.
+                See <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google Firebase Privacy</a>
+                for Firebase data practices.
+            </p>
+
+            <h2>5. Advertising and Advertising ID (AAID)</h2>
+            <p>
+                The free version of the game may display ads through Google AdMob. Your device's
+                <strong>Android Advertising ID (AAID)</strong> may be used for ad delivery and measurement.
+                AAID does not directly identify you personally; it is processed by ad networks for
+                relevant ad display and performance measurement.
             </p>
             <p>
                 An in-app purchase option is available to remove ads. After purchase, ad display is disabled.
             </p>
+            <p>
+                About Google ad privacy:
+                <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Advertising Technologies</a>
+            </p>
 
-            <h2>5. In-App Purchases</h2>
+            <h2>6. In-App Purchases</h2>
             <p>The game offers the following in-app purchases:</p>
             <ul>
                 <li><strong>Remove ads</strong> — ad-free gameplay</li>
                 <li><strong>Buy coins</strong> — in-game coin packs</li>
             </ul>
             <p>
-                All payments are processed through platform stores such as Google Play or the App Store.
-                Porta does not have access to credit card numbers, billing addresses, or similar payment details;
-                such information is handled solely by the respective store.
+                All payments are processed through Google Play. Porta does not have access to credit card
+                numbers, billing addresses, or similar payment details; such information is handled solely by Google Play.
             </p>
 
-            <h2>6. Third-Party Services</h2>
-            <p>Drop Merge: Animals may use the following third-party services:</p>
+            <h2>7. Third-Party Services</h2>
+            <p>Drop Merge: Animals uses the following third-party services:</p>
             <ul>
-                <li><strong>Ad networks</strong> — ad display (their own privacy policies apply)</li>
-                <li><strong>Google Play / App Store</strong> — in-app purchase processing</li>
-                <li><strong>Score server</strong> — storage of highest scores for the global leaderboard</li>
+                <li><strong>Google Sign-In</strong> — sign in with Google account</li>
+                <li><strong>Firebase</strong> — storage of username and score data</li>
+                <li><strong>Google AdMob</strong> — ad display (including AAID usage)</li>
+                <li><strong>Google Play</strong> — in-app purchase processing</li>
             </ul>
             <p>
-                We do not intentionally use additional SDKs that collect data, such as analytics,
-                social media integrations, or cloud save services.
+                Each service is subject to its own privacy policy. For Google policies, see
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
             </p>
 
-            <h2>7. Children’s Privacy</h2>
+            <h2>8. Children’s Privacy</h2>
             <p>
-                The game does not knowingly collect personal data from children. Only anonymous numeric
-                scores are stored for the global leaderboard. Ad networks’ own age and data policies
-                are described on the respective providers’ privacy pages.
+                The game does not knowingly collect unnecessary personal data from children.
+                Google account sign-in and advertising services are subject to Google's age and data policies.
+                Parents can manage ad personalization or reset the advertising ID in device settings.
             </p>
 
-            <h2>8. Data Security</h2>
+            <h2>9. Data Security</h2>
             <p>
-                Since no personal data is collected, there is no such data stored by us.
-                Global score data is kept solely for ranking purposes and is not linked to identity information.
+                Score and username data is stored securely on Firebase infrastructure.
+                Data is accessed only for global leaderboard functionality. Payment information
+                is not processed or stored by us.
             </p>
 
-            <h2>9. Changes</h2>
+            <h2>10. Changes</h2>
             <p>
                 We may update this policy. Material changes will be reflected by updating the
                 “last updated” date on this page.
             </p>
 
-            <h2>10. Contact</h2>
+            <h2>11. Contact</h2>
             <p>
                 Questions: <a href="mailto:yakup.erogl@gmail.com">yakup.erogl@gmail.com</a><br />
                 Porta games: <a href="https://portacom.itch.io/" target="_blank" rel="noopener">portacom.itch.io</a>
